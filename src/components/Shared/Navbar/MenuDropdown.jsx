@@ -14,7 +14,7 @@ const MenuDropdown = () => {
         {/* Become A Host btn */}
         <div className='hidden md:block'>
           <button className='disabled:cursor-not-allowed cursor-pointer hover:bg-neutral-100 py-3 px-4 text-sm font-semibold rounded-full  transition'>
-            Host your Vehical
+            Host your Vehicle
           </button>
         </div>
         {/* Dropdown btn */}
