@@ -1,12 +1,15 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { FcGoogle } from 'react-icons/fc'
-import axios from 'axios';
-import { imageUpload } from '../../api/utils';import useAuth from '../../hooks/useAuth';
+import { imageUpload } from '../../api/utils'; import useAuth from '../../hooks/useAuth';
+import { getToken, saveUser } from '../../api/auth';
+import toast from 'react-hot-toast';
+import { ImSpinner9 } from "react-icons/im";
 
 
 const SignUp = () => {
 
-  const { createUser, signInWithGoogle,updateUserProfile } = useAuth()
+  const { createUser, signInWithGoogle, updateUserProfile, loading } = useAuth()
+  const navigate = useNavigate();
 
   // Submit Handler
   const handleSubmit = async event => {
@@ -16,9 +19,35 @@ const SignUp = () => {
     const email = form.email.value;
     const password = form.password.value;
     const image = form.image.files[0]
-    const imageData = await imageUpload(image)
-    console.log(imageData);
+
+    try {
+      // Uploading Image 
+      const imageData = await imageUpload(image)
+
+      // Registering User
+      const result = await createUser(email, password)
+
+      // Saving User name and Profile Photo
+      await updateUserProfile(name, imageData?.data?.display_url)
+
+      // Save User data in Database
+      const dbResponse = await saveUser(result?.user)
+      console.log(dbResponse);
+
+      // Getting Token 
+      await getToken(result?.user?.email)
+      navigate('/')
+      toast.success('Signup Successful')
+
+    } catch (err) {
+      console.log(err);
+      toast.error(err?.message)
+    }
   }
+
+// Handle Google Sign In 
+
+
 
   return (
     <div className='flex justify-center items-center min-h-screen'>
@@ -96,7 +125,9 @@ const SignUp = () => {
               type='submit'
               className='bg-rose-500 w-full rounded-md py-3 text-white'
             >
-              Continue
+              {
+                loading ? <ImSpinner9 className='animate-spin m-auto' />: 'Continue'
+              }
             </button>
           </div>
         </form>
