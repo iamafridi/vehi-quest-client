@@ -14,12 +14,18 @@ export const saveUser = async (user) => {
 // Getting token from Server
 export const getToken = async (email) => {
   const { data } = await axiosSecure.put(`/jwt`, email);
-console.log('Token Received Successfully =' ,data);
+  console.log("Token Received Successfully =", data);
   return data;
 };
 
 // Clearing Token From Browser
 export const clearCookie = async () => {
-  const { data } = await axiosSecure.get('/logout' );
+  const { data } = await axiosSecure.get("/logout");
+  return data;
+};
+
+// Get User Role
+export const getRole = async (email) => {
+  const { data } = await axiosSecure(`/user/${email}`);
   return data;
 };
