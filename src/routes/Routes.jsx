@@ -6,7 +6,8 @@ import Login from '../pages/Login/Login'
 import SignUp from '../pages/SignUp/SignUp'
 import VehicleDetails from '../pages/VehicleDetails/VehicleDetails'
 import PrivateRoute from './PrivateRoute'
-import { getAllVehicles, getVehicle } from '../api/vehicles'
+import { getVehicle } from '../api/vehicles'
+import DashboardLayout from '../layouts/DashboardLayout'
 
 export const router = createBrowserRouter([
   {
@@ -17,15 +18,20 @@ export const router = createBrowserRouter([
       {
         path: '/',
         element: <Home />,
-      },{
-        path:'/vehicle/:id',
-        element:(<PrivateRoute><VehicleDetails></VehicleDetails></PrivateRoute>
+      }, {
+        path: '/vehicle/:id',
+        element: (<PrivateRoute><VehicleDetails></VehicleDetails></PrivateRoute>
         ),
-        loader:({params})=> getVehicle(params.id)
+        loader: ({ params }) => getVehicle(params.id)
 
       }
     ],
   },
   { path: '/login', element: <Login /> },
   { path: '/signup', element: <SignUp /> },
+  {
+    path: '/dashboard',
+    element: <DashboardLayout />,
+children:[{}]
+  }
 ])
