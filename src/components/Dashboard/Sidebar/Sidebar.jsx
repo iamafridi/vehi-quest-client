@@ -1,13 +1,14 @@
 import { useState } from 'react'
 // Components
-import { FaCartArrowDown } from "react-icons/fa6";
-import { IoAddCircleOutline } from "react-icons/io5";
+
 import ToggleBtn from '../../Button/ToggleBtn'
 // Icons
 import { GrLogout } from 'react-icons/gr'
 import { FcSettings } from 'react-icons/fc'
 import { AiOutlineBars } from 'react-icons/ai'
 import { BsGraphUp } from 'react-icons/bs'
+import { FaCartArrowDown } from "react-icons/fa6";
+import { IoAddCircleOutline } from "react-icons/io5";
 
 import useAuth from '../../../hooks/useAuth'
 import useRole from '../../../hooks/useRole'

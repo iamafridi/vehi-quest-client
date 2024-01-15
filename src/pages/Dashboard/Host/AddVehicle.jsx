@@ -3,9 +3,13 @@ import AddVehicleForm from "../../../components/Form/AddVehicleForm"
 import { useState } from "react"
 import { imageUpload } from "../../../api/utils"
 import useAuth from "../../../hooks/useAuth"
+import { addVehicle } from "../../../api/vehicles"
+import toast from "react-hot-toast"
+import { useNavigate } from "react-router-dom"
 
 
 const AddVehicle = () => {
+    const navigate = useNavigate();
     const { user } = useAuth()
     const [loading, setLoading] = useState(false)
     const [uploadButtonText, setUploadButtonText] = useState('Upload Image')
@@ -17,6 +21,7 @@ const AddVehicle = () => {
 
     const handleSubmit = async e => {
         e.preventDefault();
+        setLoading(true)
         const form = e.target;
         const location = form.location.value
         const category = form.category.value
@@ -47,6 +52,21 @@ const AddVehicle = () => {
             description,
             host,
             image: image_url?.data?.display_url
+        }
+
+        try {
+
+            const data = await addVehicle(vehicleData)
+            console.log(data);
+            setUploadButtonText('Uploaded')
+            toast.success('Vehicle Added Successfully')
+            navigate('/dashboard/my-listings')
+            setLoading(false)
+        } catch (error) {
+            toast.error(error.message)
+            console.log(error);
+        } finally {
+            setLoading(false)
         }
         console.table(vehicleData);
 
