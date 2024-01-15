@@ -6,21 +6,22 @@ import { useState } from "react";
 
 
 const VehicalReservation = ({ vehicle }) => {
+    const [value, setValue] = useState({
+        startDate: new Date(vehicle?.from),
+        endDate: new Date(vehicle?.to),
+        key: 'selection',
+    })
+
 
     const totalDays = parseInt(
-        formatDistance(new Date(vehicle?.to) , new Date(vehicle?.from)).split(' ')[0]
+        formatDistance(new Date(vehicle?.to), new Date(vehicle?.from)).split(' ')[0]
     )
     // console.log(totalDays);
 
-// Total Price Calculation 
-const totalPrice = totalDays * vehicle?.price
-// console.log(totalPrice);
+    // Total Price Calculation 
+    const totalPrice = totalDays * vehicle?.price
+    // console.log(totalPrice);
 
-const [value,setValue] = useState({
-    startDate: new Date(vehicle?.from),
-    endDate: new Date(vehicle?.to),
-    key: 'selection'
-})
 
     return (
         <div className="rounded-xl border-[1px] border-blue-400 overflow-hidden bg-white">

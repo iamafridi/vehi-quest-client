@@ -4,7 +4,6 @@ import Categories from "../../components/Categories/Categories"
 import Vehicles from "../../components/Vehicles/Vehices"
 
 const Home = () => {
-
  
   return (
     <div>

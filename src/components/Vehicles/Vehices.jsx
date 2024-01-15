@@ -4,6 +4,7 @@ import Container from "../Shared/Container";
 import { useSearchParams } from "react-router-dom";
 import Heading from "../Shared/Heading";
 import Loader from '../Shared/Loader'
+import { getAllVehicles } from "../../api/vehicles";
 
 const Vehicles = () => {
     const [vehicles, setvehicles] = useState([])
@@ -14,8 +15,7 @@ const Vehicles = () => {
 
     useEffect(() => {
         setloading(true)
-        fetch('./rooms.json')
-            .then(res => res.json())
+        getAllVehicles()
             .then(data => {
                 if (category) {
                     const filtered = data.filter(vehicle => vehicle.category === category)
@@ -26,7 +26,7 @@ const Vehicles = () => {
             })
     }, [category])
 
-    if(loading) return <Loader/>
+    if (loading) return <Loader />
     return (
         <Container>
             {
@@ -37,9 +37,9 @@ const Vehicles = () => {
                 </div>
                 ) : (
                     <div className="flex items-center justify-center min-h-[calc(100vh-300px)]">
-                        <Heading center={true} 
-                        title={'Sorry! No Vehicle Available In This Category'} 
-                        subtitle={'Please Select Other Categories'} />
+                        <Heading center={true}
+                            title={'Sorry! No Vehicle Available In This Category'}
+                            subtitle={'Please Select Other Categories'} />
                     </div>
                 )
             }

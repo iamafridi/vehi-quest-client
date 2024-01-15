@@ -6,6 +6,7 @@ import Login from '../pages/Login/Login'
 import SignUp from '../pages/SignUp/SignUp'
 import VehicleDetails from '../pages/VehicleDetails/VehicleDetails'
 import PrivateRoute from './PrivateRoute'
+import { getAllVehicles, getVehicle } from '../api/vehicles'
 
 export const router = createBrowserRouter([
   {
@@ -18,7 +19,10 @@ export const router = createBrowserRouter([
         element: <Home />,
       },{
         path:'/vehicle/:id',
-        element:<PrivateRoute><VehicleDetails></VehicleDetails></PrivateRoute>
+        element:(<PrivateRoute><VehicleDetails></VehicleDetails></PrivateRoute>
+        ),
+        loader:({params})=> getVehicle(params.id)
+
       }
     ],
   },
