@@ -7,8 +7,6 @@ import { GrLogout } from 'react-icons/gr'
 import { FcSettings } from 'react-icons/fc'
 import { AiOutlineBars } from 'react-icons/ai'
 import { BsGraphUp } from 'react-icons/bs'
-import { FaCartArrowDown } from "react-icons/fa6";
-import { IoAddCircleOutline } from "react-icons/io5";
 
 import useAuth from '../../../hooks/useAuth'
 import useRole from '../../../hooks/useRole'
@@ -74,16 +72,7 @@ const Sidebar = () => {
                 address='/dashboard'
               />
 
-              <MenuItem
-                icon={IoAddCircleOutline }
-                label='Add Vehicle'
-                address='add-vehicle'
-              />
-              <MenuItem
-                icon={FaCartArrowDown }
-                label='My Listings'
-                address='my-listings'
-              />
+              
 
               {/* Host Menu Items */}
               {role === 'guest' && <GuestMenu />}

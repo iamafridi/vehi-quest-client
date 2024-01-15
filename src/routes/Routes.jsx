@@ -10,6 +10,7 @@ import { getVehicle } from '../api/vehicles'
 import DashboardLayout from '../layouts/DashboardLayout'
 import AddVehicle from '../pages/Dashboard/Host/AddRoom'
 import MyListings from '../pages/Dashboard/Host/MyListings'
+import HostRoute from './HostRoute'
 
 export const router = createBrowserRouter([
   {
@@ -33,15 +34,15 @@ export const router = createBrowserRouter([
   { path: '/signup', element: <SignUp /> },
   {
     path: '/dashboard',
-    element: <DashboardLayout />,
+    element: <PrivateRoute><DashboardLayout /></PrivateRoute>,
     children: [
       {
         path: 'add-vehicle',
-        element: <AddVehicle />
+        element: <PrivateRoute> <HostRoute><AddVehicle /></HostRoute></PrivateRoute>
       },
       {
         path: 'my-listings',
-        element: <MyListings />
+        element: <PrivateRoute><HostRoute><MyListings /></HostRoute></PrivateRoute>
       }
     ]
   }
