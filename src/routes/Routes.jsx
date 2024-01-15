@@ -11,6 +11,8 @@ import DashboardLayout from '../layouts/DashboardLayout'
 import AddVehicle from '../pages/Dashboard/Host/AddRoom'
 import MyListings from '../pages/Dashboard/Host/MyListings'
 import HostRoute from './HostRoute'
+import AdminRoute from './AdminRoute'
+import ManageUser from '../pages/Dashboard/Admin/ManageUser'
 
 export const router = createBrowserRouter([
   {
@@ -43,6 +45,15 @@ export const router = createBrowserRouter([
       {
         path: 'my-listings',
         element: <PrivateRoute><HostRoute><MyListings /></HostRoute></PrivateRoute>
+      },
+      // ***Admin***
+      {
+        path: 'manage-users',
+        element: <PrivateRoute>
+          <AdminRoute>
+            <ManageUser />
+          </AdminRoute>
+        </PrivateRoute>
       }
     ]
   }
