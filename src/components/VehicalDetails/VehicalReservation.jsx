@@ -2,16 +2,23 @@ import { formatDistance } from "date-fns";
 import Button from "../Button/Button";
 import Calender from "./Calender";
 import { useState } from "react";
+import BookingModal from "../Modal/BookingModal";
+import useAuth from "../../hooks/useAuth";
 
 
 
 const VehicalReservation = ({ vehicle }) => {
+    const { user } = useAuth();
+    let [isOpen, setIsOpen] = useState(false)
+
+    const closeModal = () => {
+        setIsOpen(false)
+    }
     const [value, setValue] = useState({
         startDate: new Date(vehicle?.from),
         endDate: new Date(vehicle?.to),
         key: 'selection',
     })
-
 
     const totalDays = parseInt(
         formatDistance(new Date(vehicle?.to), new Date(vehicle?.from)).split(' ')[0]
@@ -21,6 +28,22 @@ const VehicalReservation = ({ vehicle }) => {
     // Total Price Calculation 
     const totalPrice = totalDays * vehicle?.price
     // console.log(totalPrice);
+
+    const [bookingInfo, setBookingInfo] = useState({
+        guest: {
+            name: user?.displayName,
+            email: user?.email,
+            image: user?.photoURL,
+        },
+        host: vehicle?.host?.email,
+        location: vehicle?.location,
+        price: totalPrice,
+        to: value.endDate,
+        from: value.startDate,
+        title: vehicle?.title,
+        vehicleId: vehicle?._id,
+        image: vehicle?.image,
+    })
 
 
     return (
@@ -32,12 +55,18 @@ const VehicalReservation = ({ vehicle }) => {
             <hr />
             <div className="flex justify-center"><Calender value={value} /></div>
             <hr />
-            <div className="p-4"><Button label={'Reserve'} /></div>
+            <div className="p-4">
+                <Button onClick={() => setIsOpen(true)} label={'Reserve'} /></div>
             <hr />
             <div className="p-4 flex items-center justify-between font-semibold text-lg">
                 <div>Total :</div>
                 <div>$ {totalPrice} </div>
             </div>
+            <BookingModal
+                closeModal={closeModal}
+                isOpen={isOpen}
+                bookingInfo={bookingInfo}
+            />
         </div>
     );
 };
