@@ -5,8 +5,9 @@ import MenuItem from '../Sidebar/MenuItem'
 import { useState } from 'react'
 import useAuth from '../../../hooks/useAuth'
 import HostModal from '../../Modal/HostRequestModal'
-import { becomeHost } from '../../../api/auth'
 import toast from 'react-hot-toast'
+import { becomeHost } from '../../../api/auth'
+
 const GuestMenu = () => {
   const [role] = useRole()
   const { user } = useAuth()
