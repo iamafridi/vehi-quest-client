@@ -4,6 +4,7 @@ import { format } from 'date-fns'
 import { Fragment } from 'react'
 import CheckoutForm from '../Form/CheckoutForm'
 import { loadStripe } from '@stripe/stripe-js'
+
 const stripePromise = loadStripe(import.meta.env.VITE_Payment_Gateway_PK)
 const BookingModal = ({ closeModal, isOpen, bookingInfo }) => {
     return (
