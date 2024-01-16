@@ -10,11 +10,14 @@ import { BsGraphUp } from 'react-icons/bs'
 
 import useAuth from '../../../hooks/useAuth'
 import useRole from '../../../hooks/useRole'
-import HostMenu from './HostMenu'
-import GuestMenu from './GuestMenu'
-import AdminMenu from './AdminMenu'
+
+
+
 import Logo from '../../Shared/Logo'
 import MenuItem from './MenuItem'
+import HostMenu from '../Menu/HostMenu'
+import GuestMenu from '../Menu/GuestMenu'
+import AdminMenu from '../Menu/AdminMenu'
 
 const Sidebar = () => {
   const { logOut } = useAuth()

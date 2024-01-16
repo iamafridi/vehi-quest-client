@@ -1,6 +1,5 @@
 import { useLoaderData } from "react-router-dom";
 import Container from "../../components/Shared/Container";
-import Loader from "../../components/Shared/Loader";
 import { Helmet } from "react-helmet-async";
 import Header from "../../components/VehicalDetails/Header";
 import VehicleInfo from "../../components/VehicalDetails/VehicleInfo";
@@ -8,14 +7,15 @@ import VehicalReservation from "../../components/VehicalDetails/VehicalReservati
 
 const VehicleDetails = () => {
     const vehicle = useLoaderData()
-   
 
-    if (loading) return <Loader />
+
+
     return (
         <Container>
             <Helmet>
-                <title>{vehicle.title}</title>
+                <title>{vehicle?.title}</title>
             </Helmet>
+            {vehicle && (
             <div className="max-w-screen-lg mx-auto">
                 {/* Header */}
                 <div className="flex flex-col gap-6">
@@ -26,11 +26,12 @@ const VehicleDetails = () => {
                     <VehicleInfo vehicle={vehicle} />
                     {/* Vehicle reservation */}
                     <div className="md:col-span-3 order-first md:order-last mb-10">
-<VehicalReservation vehicle={vehicle} />
+                        <VehicalReservation vehicle={vehicle} />
                     </div>
                 </div>
 
             </div>
+             )}
         </Container>
     );
 };

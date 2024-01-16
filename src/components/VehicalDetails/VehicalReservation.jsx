@@ -28,6 +28,14 @@ const VehicalReservation = ({ vehicle }) => {
     // Total Price Calculation 
     const totalPrice = totalDays * vehicle?.price
     // console.log(totalPrice);
+    const handleDateChange = ranges => {
+        console.log(ranges)
+        setValue({
+            startDate: new Date(vehicle?.from),
+            endDate: new Date(vehicle?.to),
+            key: 'selection',
+        })
+    }
 
     const [bookingInfo, setBookingInfo] = useState({
         guest: {
@@ -53,13 +61,13 @@ const VehicalReservation = ({ vehicle }) => {
                 <div className="font-light text-neutral-600"> Per day</div>
             </div>
             <hr />
-            <div className="flex justify-center"><Calender value={value} /></div>
+            <div className="flex justify-center"><Calender handleDateChange={handleDateChange} value={value} /></div>
             <hr />
             <div className="p-4">
-                <Button 
-                disabled={vehicle.host.email === user.email || vehicle.booked}
-                 onClick={() => setIsOpen(true)} 
-                 label={'Reserve'} /></div>
+                <Button
+                    disabled={vehicle.host.email === user.email || vehicle.booked}
+                    onClick={() => setIsOpen(true)}
+                    label={'Reserve'} /></div>
             <hr />
             <div className="p-4 flex items-center justify-between font-semibold text-lg">
                 <div>Total :</div>

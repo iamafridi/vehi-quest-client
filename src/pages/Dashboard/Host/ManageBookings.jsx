@@ -3,7 +3,9 @@ import useAuth from '../../../hooks/useAuth'
 import { useQuery } from '@tanstack/react-query'
 import { getHostBookings } from '../../../api/bookings'
 import Loader from '../../../components/Shared/Loader'
-import TableRow from '../../../components/Dashboard/Sidebar/TableRows/TableRow'
+
+import EmptyState from '../../../components/Shared/EmptyState'
+import TableRow from '../../../components/Dashboard/TableRows/TableRows'
 
 const ManageBookings = () => {
     const { user, loading } = useAuth()
@@ -24,7 +26,7 @@ const ManageBookings = () => {
             <Helmet>
                 <title>Manage Bookings</title>
             </Helmet>
-
+            {bookings && Array.isArray(bookings) && bookings.length > 0 ? (
             <div className='container mx-auto px-4 sm:px-8'>
                 <div className='py-8'>
                     <div className='-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto'>
@@ -74,7 +76,8 @@ const ManageBookings = () => {
                                     {/* Table row data */}{' '}
                                     {bookings &&
                                         bookings.map(booking => (
-                                            <TableRow key={booking._id} booking={booking} />
+                                            <TableRow key={booking._id} booking={booking}
+                                            refetch={refetch} />
                                         ))}
                                 </tbody>
                             </table>
@@ -82,6 +85,13 @@ const ManageBookings = () => {
                     </div>
                 </div>
             </div>
+             ) : (
+                <EmptyState
+                  message='No one booked your vehicle yet, you will find deals soon!'
+                  address='/'
+                  label='Go Back'
+                />
+              )}
         </>
     )
 }

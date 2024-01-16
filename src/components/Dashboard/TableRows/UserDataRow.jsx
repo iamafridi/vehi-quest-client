@@ -1,7 +1,9 @@
 import { useState } from 'react'
-import UpdateUserModal from '../../../Modal/UpdateUserModal'
-import { updateRole } from '../../../../api/auth'
+
+
 import { toast } from 'react-hot-toast'
+import UpdateUserModal from '../../Modal/UpdateUserModal'
+import { updateRole } from '../../../api/auth'
 const UserDataRow = ({ user, refetch }) => {
     const [isOpen, setIsOpen] = useState(false)
     const modalHandler = async role => {

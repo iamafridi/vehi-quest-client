@@ -1,21 +1,54 @@
 import { AiOutlineMenu } from 'react-icons/ai'
+import { FaCar } from "react-icons/fa";
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import useAuth from '../../../hooks/useAuth'
 import avatarImg from '../../../assets/images/placeholder.jpg'
+import HostModal from '../../Modal/HostRequestModal'
+import { becomeHost } from '../../../api/auth'
+import toast from 'react-hot-toast'
+import useRole from '../../../hooks/useRole'
 
 const MenuDropdown = () => {
+  const { user, logOut } = useAuth()
+  const [role] = useRole();
   const [isOpen, setIsOpen] = useState(false)
-  const { user ,logOut} = useAuth()
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const closeModal = () => {
+    setIsModalOpen(false)
+  }
+  const modalHandler = async () => {
+    try {
+      const data = await becomeHost(user?.email)
+      console.log(data)
+      if (data.modifiedCount > 0) {
+        toast.success('Success!, Please wait for admin confirmation.')
+      } else {
+        toast.success('Please!, Wait for admin approval⏱️')
+      }
+    } catch (err) {
+      console.log(err)
+    } finally {
+      setIsModalOpen(false)
+    }
+  }
+
 
   return (
     <div className='relative'>
       <div className='flex flex-row items-center gap-3'>
         {/* Become A Host btn */}
         <div className='hidden md:block'>
-          <button className='disabled:cursor-not-allowed cursor-pointer hover:bg-neutral-100 py-3 px-4 text-sm font-semibold rounded-full  transition'>
-            Host your Vehicle
-          </button>
+          {
+            (!user || !role || role === 'guest') && (
+              <button
+                disabled={!user}
+                onClick={() => setIsModalOpen(true)}
+                className='disabled:cursor-not-allowed cursor-pointer hover:bg-neutral-100 py-3 px-4 text-sm font-semibold rounded-full  transition'>
+                Host your Vehicle <FaCar />
+              </button>
+            )
+          }
         </div>
         {/* Dropdown btn */}
         <div
@@ -54,10 +87,10 @@ const MenuDropdown = () => {
                 Dashboard
               </Link>
                 <div
-                 onClick={logOut}
+                  onClick={logOut}
                   className='px-4 py-3 hover:bg-neutral-100 transition font-semibold cursor-pointer'
                 >
-                 Logout
+                  Logout
                 </div>
               </>
                 :
@@ -78,6 +111,10 @@ const MenuDropdown = () => {
           </div>
         </div>
       )}
+      <HostModal
+        isModalOpen={isModalOpen}
+        closeModal={closeModal}
+        modalHandler={modalHandler} />
     </div>
   )
 }

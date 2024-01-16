@@ -23,3 +23,13 @@ export const addVehicle = async (vehicleData) => {
   const { data } = await axiosSecure.post(`/vehicles`, vehicleData);
   return data;
 };
+// Delete a Vehicle
+export const deleteVehicle = async id => {
+  const { data } = await axiosSecure.delete(`/vehicles/${id}`)
+  return data
+}
+// update a vehicle
+export const updateVehicle = async (vehicleData, id) => {
+  const { data } = await axiosSecure.put(`/vehicles/${id}`, vehicleData)
+  return data
+}

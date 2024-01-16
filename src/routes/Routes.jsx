@@ -8,7 +8,7 @@ import VehicleDetails from '../pages/VehicleDetails/VehicleDetails'
 import PrivateRoute from './PrivateRoute'
 import { getVehicle } from '../api/vehicles'
 import DashboardLayout from '../layouts/DashboardLayout'
-import AddVehicle from '../pages/Dashboard/Host/AddRoom'
+
 import MyListings from '../pages/Dashboard/Host/MyListings'
 import HostRoute from './HostRoute'
 import AdminRoute from './AdminRoute'
@@ -16,6 +16,8 @@ import ManageUser from '../pages/Dashboard/Admin/ManageUser'
 import Profile from '../pages/Dashboard/Common/Profile'
 import MyBookings from '../pages/Dashboard/Guest/MyBookings'
 import ManageBookings from '../pages/Dashboard/Host/ManageBookings'
+import Statistics from '../pages/Dashboard/Common/Statistics'
+import AddVehicle from '../pages/Dashboard/Host/AddVehicle'
 
 export const router = createBrowserRouter([
   {
@@ -41,6 +43,12 @@ export const router = createBrowserRouter([
     path: '/dashboard',
     element: <PrivateRoute><DashboardLayout /></PrivateRoute>,
     children: [
+      {
+        index: true,
+        element: (
+          <PrivateRoute><Statistics /></PrivateRoute>
+        )
+      },
       {
         path: 'add-vehicle',
         element: <PrivateRoute> <HostRoute><AddVehicle /></HostRoute></PrivateRoute>
