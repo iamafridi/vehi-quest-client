@@ -19,6 +19,8 @@ const CheckoutForm = ({ bookingInfo, closeModal }) => {
     const [clientSecret, setClientSecret] = useState('')
     const [processing, setProcessing] = useState(false)
     const navigate = useNavigate()
+
+
     useEffect(() => {
         // create payment intent
         if (bookingInfo.price > 0) {
@@ -57,7 +59,7 @@ const CheckoutForm = ({ bookingInfo, closeModal }) => {
 
         setProcessing(true)
 
-        // Ekhane taka katbe
+        // Here Money will be educted
         const { paymentIntent, error: confirmError } =
             await stripe.confirmCardPayment(clientSecret, {
                 payment_method: {
