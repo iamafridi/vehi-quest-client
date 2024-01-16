@@ -1,5 +1,5 @@
 import { FaUserFriends } from "react-icons/fa";
-import MenuItem from "./MenuItem";
+import MenuItem from "../Sidebar/MenuItem";
 const AdminMenu = () => {
     return (
         <>

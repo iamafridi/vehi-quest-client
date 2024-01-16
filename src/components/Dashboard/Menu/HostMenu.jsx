@@ -1,4 +1,4 @@
-import MenuItem from "./MenuItem";
+import MenuItem from "../Sidebar/MenuItem";
 import { FaCartArrowDown } from "react-icons/fa6";
 import { IoAddCircleOutline } from "react-icons/io5";
 import { FaAddressBook } from "react-icons/fa";
