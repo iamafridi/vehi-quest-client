@@ -1,11 +1,11 @@
 import { Helmet } from 'react-helmet-async'
 import useAuth from '../../../hooks/useAuth'
 import { useQuery } from '@tanstack/react-query'
-import { getBookings } from '../../../api/bookings'
+import { getHostBookings } from '../../../api/bookings'
 import Loader from '../../../components/Shared/Loader'
 import TableRow from '../../../components/Dashboard/Sidebar/TableRows/TableRow'
 
-const MyBookings = () => {
+const ManageBookings = () => {
     const { user, loading } = useAuth()
     const {
         data: bookings = [],
@@ -14,14 +14,15 @@ const MyBookings = () => {
     } = useQuery({
         queryKey: ['bookings', user?.email],
         enabled: !loading,
-        queryFn: async () => await getBookings(user?.email),
+        queryFn: async () => await getHostBookings(user?.email),
     })
-
+    console.log(bookings)
     if (isLoading) return <Loader />
+
     return (
         <>
             <Helmet>
-                <title>My Bookings</title>
+                <title>Manage Bookings</title>
             </Helmet>
 
             <div className='container mx-auto px-4 sm:px-8'>
@@ -41,7 +42,7 @@ const MyBookings = () => {
                                             scope='col'
                                             className='px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal'
                                         >
-                                            Info
+                                            Guest Info
                                         </th>
                                         <th
                                             scope='col'
@@ -70,7 +71,7 @@ const MyBookings = () => {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {/* Table Row Data */}{' '}
+                                    {/* Table row data */}{' '}
                                     {bookings &&
                                         bookings.map(booking => (
                                             <TableRow key={booking._id} booking={booking} />
@@ -85,4 +86,4 @@ const MyBookings = () => {
     )
 }
 
-export default MyBookings;
+export default ManageBookings
