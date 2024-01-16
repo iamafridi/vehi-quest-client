@@ -17,3 +17,15 @@ export const updateStatus = async (id, status) => {
   const { data } = await axiosSecure.patch(`/rooms/status/${id}`, { status });
   return data;
 };
+
+// Get All Bookings for a guest
+
+export const getBookings = async (email) => {
+  const { data } = await axiosSecure(`/bookings?email=${email}`);
+  return data;
+};
+// For host
+export const getHostBookings = async (email) => {
+  const { data } = await axiosSecure(`/bookings/host?email=${email}`);
+  return data;
+};

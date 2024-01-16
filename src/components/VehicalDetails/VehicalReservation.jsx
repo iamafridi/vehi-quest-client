@@ -56,7 +56,10 @@ const VehicalReservation = ({ vehicle }) => {
             <div className="flex justify-center"><Calender value={value} /></div>
             <hr />
             <div className="p-4">
-                <Button onClick={() => setIsOpen(true)} label={'Reserve'} /></div>
+                <Button 
+                disabled={vehicle.host.email === user.email || vehicle.booked}
+                 onClick={() => setIsOpen(true)} 
+                 label={'Reserve'} /></div>
             <hr />
             <div className="p-4 flex items-center justify-between font-semibold text-lg">
                 <div>Total :</div>
