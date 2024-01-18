@@ -8,11 +8,11 @@
       "guests": 4,
       "seats": 5,
       "description": "A compact and fuel-efficient car for city travel.",
-      "image": "car1.jpg",
+      "image": "https://i.ibb.co/yy9zB4s/images.jpg",
       "host": {
-        "name": "Car Rental Company 1",
-        "image": "host1.jpg",
-        "email": "info@rentalcompany1.com"
+        "name": "Nezuko",
+        "image": "https://i.ibb.co/Gdkdq90/nezuko-kamado-demon-1242x2208-9319.jpg",
+        "email": "nisa@kisa.cc"
       },
       "category": "Cars"
     },
@@ -25,11 +25,11 @@
       "guests": 5,
       "seats": 7,
       "description": "A spacious SUV for family trips.",
-      "image": "car2.jpg",
+      "image": "https://i.ibb.co/yy9zB4s/images.jpg",
       "host": {
         "name": "Car Rental Company 2",
-        "image": "host2.jpg",
-        "email": "info@rentalcompany2.com"
+        "image": "https://i.ibb.co/FJCyyws/Zenitsu-Demon-Slayer-Guide.png",
+        "email": "nisa@kisa.cc"
       },
       "category": "Cars"
     },
@@ -42,11 +42,11 @@
       "guests": 2,
       "seats": 2,
       "description": "A high-end luxury car for a premium experience.",
-      "image": "car3.jpg",
+      "image": "https://i.ibb.co/yy9zB4s/images.jpg",
       "host": {
         "name": "Luxury Rentals",
-        "image": "host3.jpg",
-        "email": "info@luxuryrentals.com"
+        "image": "https://i.ibb.co/FJCyyws/Zenitsu-Demon-Slayer-Guide.png",
+        "email": "nisa@kisa.cc"
       },
       "category": "Cars"
     },
@@ -59,11 +59,11 @@
       "guests": 1,
       "seats": 1,
       "description": "An exhilarating sport motorcycle for adventure seekers.",
-      "image": "motorcycle1.jpg",
+      "image": "https://i.ibb.co/yy9zB4s/images.jpg",
       "host": {
         "name": "Motorbike Adventures",
-        "image": "host4.jpg",
-        "email": "info@motorbikeadventures.com"
+        "image": "https://i.ibb.co/FJCyyws/Zenitsu-Demon-Slayer-Guide.png",
+        "email": "nisa@kisa.cc"
       },
       "category": "Motorcycles"
     },
@@ -76,11 +76,11 @@
       "guests": 2,
       "seats": 2,
       "description": "A comfortable touring motorcycle for long journeys.",
-      "image": "motorcycle2.jpg",
+      "image": "https://i.ibb.co/yy9zB4s/images.jpg",
       "host": {
         "name": "Open Road Rentals",
-        "image": "host5.jpg",
-        "email": "info@openroadrentals.com"
+        "image": "https://i.ibb.co/FJCyyws/Zenitsu-Demon-Slayer-Guide.png",
+        "email": "nisa@kisa.cc"
       },
       "category": "Motorcycles"
     },
@@ -93,11 +93,11 @@
       "guests": 15,
       "seats": 20,
       "description": "A spacious minibus for group travels.",
-      "image": "bus1.jpg",
+      "image": "https://i.ibb.co/yy9zB4s/images.jpg",
       "host": {
         "name": "Group Travel Services",
-        "image": "host6.jpg",
-        "email": "info@grouptravelservices.com"
+        "image": "https://i.ibb.co/FJCyyws/Zenitsu-Demon-Slayer-Guide.png",
+        "email": "nisa@kisa.cc"
       },
       "category": "Bus"
     }
