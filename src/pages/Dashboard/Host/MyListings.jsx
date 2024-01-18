@@ -82,7 +82,7 @@ const MyListings = () => {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {/* Room row data */}
+                                        {/* vehicle row data */}
 
                                         {vehicles.map(vehicle => (
                                             <VehicleDataRow key={vehicle._id} vehicle={vehicle} 

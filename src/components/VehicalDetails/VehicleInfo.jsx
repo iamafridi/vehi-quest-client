@@ -34,8 +34,8 @@ const VehicleInfo = ({ vehicle }) => {
                 '
           >
             <div>{vehicle?.guests} guests</div>
-            <div>{vehicle?.bedrooms} rooms</div>
-            <div>{vehicle?.bathrooms} bathrooms</div>
+            <div>{vehicle?.bedvehicles} vehicles</div>
+            <div>{vehicle?.bathvehicles} bathvehicles</div>
           </div>
         </div>
   

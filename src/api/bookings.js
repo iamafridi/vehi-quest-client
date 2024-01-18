@@ -14,7 +14,7 @@ export const saveBookingInfo = async (paymentInfo) => {
 
 //  Update Booking Status after booking a vehicle
 export const updateStatus = async (id, status) => {
-  const { data } = await axiosSecure.patch(`/rooms/status/${id}`, { status });
+  const { data } = await axiosSecure.patch(`/vehicles/status/${id}`, { status });
   return data;
 };
 

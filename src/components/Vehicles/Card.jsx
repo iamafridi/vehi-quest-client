@@ -22,7 +22,7 @@ const Card = ({ vehicle }) => {
                 transition
               '
                         src={vehicle?.image}
-                        alt='Room'
+                        alt='vehicle'
                     />
                     <div
                         className='

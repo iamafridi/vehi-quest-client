@@ -42,7 +42,7 @@ const BookingModal = ({ closeModal, isOpen, bookingInfo }) => {
                                 </Dialog.Title>
                                 <div className='mt-2'>
                                     <p className='text-sm text-gray-500'>
-                                        Room: {bookingInfo.title}
+                                        vehicle: {bookingInfo.title}
                                     </p>
                                 </div>
                                 <div className='mt-2'>

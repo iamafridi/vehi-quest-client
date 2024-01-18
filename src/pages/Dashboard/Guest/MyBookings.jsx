@@ -88,7 +88,7 @@ const MyBookings = () => {
                 <EmptyState
                   message='No booking data available.'
                   address='/'
-                  label='Browse Rooms'
+                  label='Browse vehicles'
                 />
                 )}
         </>

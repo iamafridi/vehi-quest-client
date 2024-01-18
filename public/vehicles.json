@@ -1,0 +1,54 @@
+ [
+    {
+      "location": "City A",
+      "title": "Economy Car 1",
+      "from": "2024-02-01",
+      "to": "2024-02-10",
+      "price": 50,
+      "guests": 4,
+      "seats": 5,
+      "description": "A compact and fuel-efficient car for city travel.",
+      "image": "car1.jpg",
+      "host": {
+        "name": "Car Rental Company 1",
+        "image": "host1.jpg",
+        "email": "info@rentalcompany1.com"
+      },
+      "category": "Economy"
+    },
+    {
+      "location": "City B",
+      "title": "SUV 1",
+      "from": "2024-03-05",
+      "to": "2024-03-15",
+      "price": 80,
+      "guests": 5,
+      "seats": 7,
+      "description": "A spacious SUV for family trips.",
+      "image": "car2.jpg",
+      "host": {
+        "name": "Car Rental Company 2",
+        "image": "host2.jpg",
+        "email": "info@rentalcompany2.com"
+      },
+      "category": "SUV"
+    },
+    {
+      "location": "City C",
+      "title": "Luxury Car 1",
+      "from": "2024-04-10",
+      "to": "2024-04-20",
+      "price": 150,
+      "guests": 2,
+      "seats": 2,
+      "description": "A high-end luxury car for a premium experience.",
+      "image": "car3.jpg",
+      "host": {
+        "name": "Luxury Rentals",
+        "image": "host3.jpg",
+        "email": "info@luxuryrentals.com"
+      },
+      "category": "Luxury"
+    }
+   
+  ]

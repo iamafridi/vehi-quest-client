@@ -139,15 +139,15 @@ const AddVehicleForm = ({
                             </div>
                             {/* 
               <div className='space-y-1 text-sm'>
-                <label htmlFor='bathrooms' className='block text-gray-600'>
-                  Bathrooms
+                <label htmlFor='bathvehicles' className='block text-gray-600'>
+                  Bathvehicles
                 </label>
                 <input
                   className='w-full px-4 py-3 text-gray-800 border border-rose-300 focus:outline-rose-500 rounded-md '
-                  name='bathrooms'
-                  id='bathrooms'
+                  name='bathvehicles'
+                  id='bathvehicles'
                   type='number'
-                  placeholder='Bathrooms'
+                  placeholder='Bathvehicles'
                   required
                 />
               </div> */}
