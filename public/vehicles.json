@@ -1,4 +1,4 @@
- [
+[
     {
       "location": "City A",
       "title": "Economy Car 1",
@@ -14,7 +14,7 @@
         "image": "host1.jpg",
         "email": "info@rentalcompany1.com"
       },
-      "category": "Economy"
+      "category": "Cars"
     },
     {
       "location": "City B",
@@ -31,7 +31,7 @@
         "image": "host2.jpg",
         "email": "info@rentalcompany2.com"
       },
-      "category": "SUV"
+      "category": "Cars"
     },
     {
       "location": "City C",
@@ -48,7 +48,59 @@
         "image": "host3.jpg",
         "email": "info@luxuryrentals.com"
       },
-      "category": "Luxury"
+      "category": "Cars"
+    },
+    {
+      "location": "City D",
+      "title": "Sport Motorcycle 1",
+      "from": "2024-05-15",
+      "to": "2024-05-25",
+      "price": 40,
+      "guests": 1,
+      "seats": 1,
+      "description": "An exhilarating sport motorcycle for adventure seekers.",
+      "image": "motorcycle1.jpg",
+      "host": {
+        "name": "Motorbike Adventures",
+        "image": "host4.jpg",
+        "email": "info@motorbikeadventures.com"
+      },
+      "category": "Motorcycles"
+    },
+    {
+      "location": "City E",
+      "title": "Touring Motorcycle 1",
+      "from": "2024-06-10",
+      "to": "2024-06-20",
+      "price": 60,
+      "guests": 2,
+      "seats": 2,
+      "description": "A comfortable touring motorcycle for long journeys.",
+      "image": "motorcycle2.jpg",
+      "host": {
+        "name": "Open Road Rentals",
+        "image": "host5.jpg",
+        "email": "info@openroadrentals.com"
+      },
+      "category": "Motorcycles"
+    },
+    {
+      "location": "City F",
+      "title": "Minibus 1",
+      "from": "2024-07-01",
+      "to": "2024-07-10",
+      "price": 120,
+      "guests": 15,
+      "seats": 20,
+      "description": "A spacious minibus for group travels.",
+      "image": "bus1.jpg",
+      "host": {
+        "name": "Group Travel Services",
+        "image": "host6.jpg",
+        "email": "info@grouptravelservices.com"
+      },
+      "category": "Bus"
     }
-   
+    
   ]
+
