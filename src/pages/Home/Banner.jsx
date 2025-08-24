@@ -51,11 +51,11 @@ const BannerCarousel = () => {
 
                 {/* Buttons */}
                 <div className="button-container mt-6 mb-4 flex flex-col sm:flex-row gap-4 justify-center items-center">
-                    <Link to='/book/Mountain'>
+                    {/* <Link to='/'>
                         <button className="animated-button bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg">
                             Explore
                         </button>
-                    </Link>
+                    </Link> */}
                     <Link to='/login'>
                         <button className="animated-button bg-transparent border-2 border-white text-white hover:bg-white hover:text-blue-600 px-6 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg">
                             Learn More

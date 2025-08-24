@@ -10,7 +10,7 @@ import { BsGraphUp } from 'react-icons/bs'
 
 import useAuth from '../../../hooks/useAuth'
 import useRole from '../../../hooks/useRole'
-
+import { FaAddressBook } from "react-icons/fa";
 
 
 import Logo from '../../Shared/Logo'
@@ -73,6 +73,11 @@ const Sidebar = () => {
                 label='Statistics'
                 address='/dashboard'
               />
+              <MenuItem
+                icon={FaAddressBook}
+                label='My bookings'
+                address='/dashboard/my-bookings'
+              />
 
 
 
@@ -86,6 +91,12 @@ const Sidebar = () => {
 
         <div>
           <hr />
+
+          <MenuItem
+            icon={FcSettings}
+            label='Home'
+            address='/'
+          />
 
           <MenuItem
             icon={FcSettings}
