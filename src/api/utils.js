@@ -2,29 +2,82 @@ import axios from "axios";
 import axiosSecure from ".";
 
 export const imageUpload = async (image) => {
-  const formData = new FormData();
-  formData.append("image", image);
-  const { data } = await axios.post(
-    `https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_IMGBB_KEY_API}`,
-    formData
-  );
-
-  return data;
+  try {
+    const formData = new FormData();
+    formData.append("image", image);
+    const { data } = await axios.post(
+      `https://api.imgbb.com/1/upload?key=${
+        import.meta.env.VITE_IMGBB_KEY_API
+      }`,
+      formData
+    );
+    return data;
+  } catch (error) {
+    console.error("Error uploading image:", error);
+    throw error;
+  }
 };
 
-// admin stat
+// Admin statistics
 export const getAdminStat = async () => {
-  const { data } = await axiosSecure(`/admin-stat`)
-  return data
-}
+  try {
+    const { data } = await axiosSecure("/admin-stat");
+    return data;
+  } catch (error) {
+    console.error("Error getting admin stats:", error);
+    throw error;
+  }
+};
+
 // Host statistics
 export const getHostStat = async () => {
-  const { data } = await axiosSecure.get('/host-stat')
-  return data
-}
+  try {
+    const { data } = await axiosSecure.get("/host-stat");
+    return data;
+  } catch (error) {
+    console.error("Error getting host stats:", error);
+    throw error;
+  }
+};
+
 // Guest statistics
 export const getGuestStat = async () => {
-  const { data } = await axiosSecure.get('/guest-stat')
+  try {
+    const { data } = await axiosSecure.get("/guest-stat");
+    return data;
+  } catch (error) {
+    console.error("Error getting guest stats:", error);
+    throw error;
+  }
+};
 
-  return data
-}
+// import axios from "axios";
+// import axiosSecure from ".";
+
+// export const imageUpload = async (image) => {
+//   const formData = new FormData();
+//   formData.append("image", image);
+//   const { data } = await axios.post(
+//     `https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_IMGBB_KEY_API}`,
+//     formData
+//   );
+
+//   return data;
+// };
+
+// // admin stat
+// export const getAdminStat = async () => {
+//   const { data } = await axiosSecure(`/admin-stat`)
+//   return data
+// }
+// // Host statistics
+// export const getHostStat = async () => {
+//   const { data } = await axiosSecure.get('/host-stat')
+//   return data
+// }
+// // Guest statistics
+// export const getGuestStat = async () => {
+//   const { data } = await axiosSecure.get('/guest-stat')
+
+//   return data
+// }
