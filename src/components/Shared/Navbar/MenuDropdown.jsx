@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import useAuth from '../../../hooks/useAuth'
 import avatarImg from '../../../assets/images/placeholder.jpg'
-import HostModal from '../../Modal/HostRequestModal'
+import HostRequestModal from '../../Modal/HostRequestModal'
 import { becomeHost } from '../../../api/auth'
 import toast from 'react-hot-toast'
 import useRole from '../../../hooks/useRole'
@@ -111,10 +111,11 @@ const MenuDropdown = () => {
           </div>
         </div>
       )}
-      <HostModal
-        isModalOpen={isModalOpen}
+      <HostRequestModal
+        isOpen={isModalOpen}
         closeModal={closeModal}
-        modalHandler={modalHandler} />
+        modalHandler={modalHandler}
+      />
     </div>
   )
 }

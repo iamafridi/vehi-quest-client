@@ -1,6 +1,6 @@
 import { Dialog, Transition } from '@headlessui/react'
 import { Fragment } from 'react'
-const HostModal = ({ modalHandler, closeModal, isOpen }) => {
+const HostRequestModal = ({ modalHandler, closeModal, isOpen }) => {
     return (
         <Transition appear show={isOpen} as={Fragment}>
             <Dialog as='div' className='relative z-10' onClose={closeModal}>
@@ -66,4 +66,4 @@ const HostModal = ({ modalHandler, closeModal, isOpen }) => {
     )
 }
 
-export default HostModal
+export default HostRequestModal

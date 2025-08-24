@@ -19,23 +19,35 @@ const VehicalReservation = ({ vehicle }) => {
         endDate: new Date(vehicle?.to),
         key: 'selection',
     })
-
-    const totalDays = parseInt(
-        formatDistance(new Date(vehicle?.to), new Date(vehicle?.from)).split(' ')[0]
-    )
+    const totalDays = Math.ceil((new Date(vehicle?.to) - new Date(vehicle?.from)) / (1000 * 60 * 60 * 24))
+    // const totalDays = parseInt(
+    //     formatDistance(new Date(vehicle?.to), new Date(vehicle?.from)).split(' ')[0]
+    // )
+    //     const totalDays = parseInt(
+    //     formatDistance(new Date(vehicle?.to), new Date(vehicle?.from)).split(' ')[0]
+    // )
     // console.log(totalDays);
 
     // Total Price Calculation 
     const totalPrice = totalDays * vehicle?.price
     // console.log(totalPrice);
     const handleDateChange = ranges => {
-        console.log(ranges)
+        console.log(ranges) // ranges parameter is logged but not used
         setValue({
-            startDate: new Date(vehicle?.from),
+            startDate: new Date(vehicle?.from), // Hardcoded values instead of using ranges
             endDate: new Date(vehicle?.to),
             key: 'selection',
         })
     }
+
+    // const handleDateChange = ranges => {
+    //     console.log(ranges)
+    //     setValue({
+    //         startDate: new Date(vehicle?.from),
+    //         endDate: new Date(vehicle?.to),
+    //         key: 'selection',
+    //     })
+    // }
 
     const [bookingInfo, setBookingInfo] = useState({
         guest: {

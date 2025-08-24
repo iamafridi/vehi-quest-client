@@ -51,7 +51,9 @@ export const router = createBrowserRouter([
       },
       {
         path: 'add-vehicle',
-        element: <PrivateRoute> <HostRoute><AddVehicle /></HostRoute></PrivateRoute>
+        element: <PrivateRoute>
+          <HostRoute><AddVehicle /></HostRoute>
+        </PrivateRoute>
       },
       {
         path: 'my-listings',

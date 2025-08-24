@@ -1,12 +1,11 @@
 import { FaCar } from "react-icons/fa";
-import { TbCarSuv } from "react-icons/tb";
 import {
   FaTruck,
   FaVanShuttle,
   FaCarTunnel,
-  FaMotorcycle,
-  FaBusAlt,
+  FaMotorcycle
 } from "react-icons/fa6";
+import { FaBusAlt, FaCarSide } from "react-icons/fa";
 import { IoCarSportSharp } from "react-icons/io5";
 
 export const categories = [
@@ -17,7 +16,7 @@ export const categories = [
   },
   {
     label: "SUVs",
-    icon: TbCarSuv,
+    icon: FaCarSide ,
     description: "Combines sedan comfort with off-road capability.",
   },
   {

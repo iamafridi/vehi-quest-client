@@ -1,6 +1,6 @@
 import { DateRange } from 'react-date-range'
 import { TbFidgetSpinner } from 'react-icons/tb'
-import { categories } from '../Categories/categoriesData'
+import { categories } from '../Categories/CategoriesData'
 const UpdateVehicleForm = ({
   handleSubmit,
   dates,
@@ -162,7 +162,7 @@ const UpdateVehicleForm = ({
               />
             </div>
 
-           
+
           </div>
 
           <div className='space-y-1 text-sm'>

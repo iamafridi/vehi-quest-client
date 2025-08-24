@@ -4,7 +4,7 @@ import useRole from '../../../hooks/useRole'
 import MenuItem from '../Sidebar/MenuItem'
 import { useState } from 'react'
 import useAuth from '../../../hooks/useAuth'
-import HostModal from '../../Modal/HostRequestModal'
+import HostRequestModal from '../../Modal/HostRequestModal'
 import toast from 'react-hot-toast'
 import { becomeHost } from '../../../api/auth'
 
@@ -49,7 +49,7 @@ const GuestMenu = () => {
         </div>
       )}
 
-      <HostModal
+      <HostRequestModal
         closeModal={closeModal}
         isOpen={isOpen}
         modalHandler={modalHandler}
