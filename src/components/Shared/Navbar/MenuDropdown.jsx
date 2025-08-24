@@ -95,23 +95,23 @@ const MenuDropdown = () => {
               className={`
                 group relative overflow-hidden
                 disabled:cursor-not-allowed disabled:opacity-50
-                cursor-pointer hover:bg-gradient-to-r hover:from-blue-50 hover:to-purple-50
+                cursor-pointer hover:bg-blue-100 hover:border-blue-300
                 py-2.5 px-4 text-sm font-semibold rounded-full
                 transition-all duration-300 ease-in-out
-                border border-transparent hover:border-blue-200
+                border border-gray-300 hover:shadow-md
                 flex items-center gap-2
-                ${!user ? 'text-gray-400' : 'text-gray-700 hover:text-blue-600'}
+                ${!user
+                  ? 'text-gray-500 bg-gray-100'
+                  : 'text-gray-800 bg-white hover:text-blue-700'
+                }
               `}
               aria-label="Become a host"
             >
               <span className="relative z-10">Host your Vehicle</span>
               <FaCar className={`
                 transition-all duration-300 
-                ${!user ? '' : 'group-hover:scale-110 group-hover:text-blue-500'}
+                ${!user ? 'text-gray-400' : 'group-hover:scale-110 group-hover:text-blue-600'}
               `} />
-              {!user && (
-                <div className="absolute inset-0 bg-gradient-to-r from-gray-100 to-gray-200 opacity-20 rounded-full" />
-              )}
             </button>
           )}
         </div>
@@ -121,25 +121,26 @@ const MenuDropdown = () => {
           ref={buttonRef}
           onClick={toggleDropdown}
           className={`
-            p-3 md:py-2 md:px-3 border border-neutral-200 
+            p-3 md:py-2 md:px-3 border border-neutral-300 bg-white
             flex flex-row items-center gap-3 rounded-full 
-            cursor-pointer hover:shadow-lg transition-all duration-200
+            cursor-pointer hover:shadow-md hover:border-gray-400 hover:bg-gray-50
+            transition-all duration-200
             focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-1
-            ${isOpen ? 'shadow-lg bg-gray-50' : 'hover:bg-gray-50'}
+            ${isOpen ? 'shadow-md bg-gray-100 border-gray-400' : ''}
           `}
           aria-expanded={isOpen}
           aria-haspopup="true"
           aria-label="User menu"
         >
           <AiOutlineMenu className={`
-            transition-transform duration-200 text-gray-600
+            transition-transform duration-200 text-gray-700
             ${isOpen ? 'rotate-90' : ''}
           `} />
 
           <div className='hidden md:block'>
             <div className="relative">
               <img
-                className='rounded-full ring-2 ring-offset-1 ring-transparent hover:ring-blue-200 transition-all duration-200'
+                className='rounded-full ring-2 ring-offset-1 ring-transparent hover:ring-blue-300 transition-all duration-200'
                 referrerPolicy='no-referrer'
                 src={user && user.photoURL ? user.photoURL : avatarImg}
                 alt='User profile'
@@ -170,7 +171,7 @@ const MenuDropdown = () => {
             className={`
               absolute right-0 top-14 z-50
               w-72 sm:w-80 md:w-64 lg:w-56
-              bg-white rounded-2xl shadow-2xl border border-gray-100
+              bg-white rounded-2xl shadow-2xl border border-gray-200
               overflow-hidden transform transition-all duration-200 ease-out
               ${isOpen ? 'opacity-100 scale-100 translate-y-0' : 'opacity-0 scale-95 -translate-y-2'}
             `}
@@ -181,7 +182,7 @@ const MenuDropdown = () => {
 
               {/* User Info Section */}
               {user && (
-                <div className="px-4 py-3 border-b border-gray-100 bg-gradient-to-r from-blue-50 to-purple-50">
+                <div className="px-4 py-3 border-b border-gray-200 bg-gradient-to-r from-blue-50 to-indigo-50">
                   <div className="flex items-center gap-3">
                     <img
                       className='rounded-full ring-2 ring-white'
@@ -195,11 +196,11 @@ const MenuDropdown = () => {
                       <p className="text-sm font-semibold text-gray-900 truncate">
                         {user.displayName || 'User'}
                       </p>
-                      <p className="text-xs text-gray-500 truncate">
+                      <p className="text-xs text-gray-600 truncate">
                         {user.email}
                       </p>
                       {role && (
-                        <span className="inline-block px-2 py-0.5 mt-1 text-xs font-medium bg-blue-100 text-blue-800 rounded-full capitalize">
+                        <span className="inline-block px-2 py-0.5 mt-1 text-xs font-medium bg-blue-200 text-blue-900 rounded-full capitalize">
                           {role}
                         </span>
                       )}
@@ -217,10 +218,10 @@ const MenuDropdown = () => {
                       setIsModalOpen(true)
                       setIsOpen(false)
                     }}
-                    className='w-full text-left px-4 py-3 hover:bg-blue-50 transition-colors font-semibold text-blue-600 disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-3'
+                    className='w-full text-left px-4 py-3 hover:bg-blue-100 transition-colors font-semibold text-blue-700 disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-3 rounded-lg'
                     role="menuitem"
                   >
-                    <FaCar className="text-blue-500" />
+                    <FaCar className="text-blue-600" />
                     Host your Vehicle
                   </button>
                 )}
@@ -233,10 +234,10 @@ const MenuDropdown = () => {
                 <Link
                   to='/'
                   onClick={handleLinkClick}
-                  className=' md:hidden px-4 py-3 hover:bg-gray-50 transition-colors font-semibold text-gray-700 flex items-center gap-3'
+                  className='md:hidden px-4 py-3 hover:bg-gray-100 transition-colors font-medium text-gray-800 hover:text-gray-900 flex items-center gap-3 rounded-lg mx-2'
                   role="menuitem"
                 >
-                  <FaHome className="text-gray-500" />
+                  <FaHome className="text-gray-600" />
                   Home
                 </Link>
 
@@ -245,19 +246,19 @@ const MenuDropdown = () => {
                     <Link
                       to='/dashboard'
                       onClick={handleLinkClick}
-                      className='px-4 py-3 hover:bg-gray-50 transition-colors font-semibold text-gray-700 flex items-center gap-3'
+                      className='px-4 py-3 hover:bg-gray-100 transition-colors font-medium text-gray-800 hover:text-gray-900 flex items-center gap-3 rounded-lg mx-2'
                       role="menuitem"
                     >
-                      <FaTachometerAlt className="text-gray-500" />
+                      <FaTachometerAlt className="text-gray-600" />
                       Dashboard
                     </Link>
 
                     <button
                       onClick={handleLogout}
-                      className='w-full text-left px-4 py-3 hover:bg-red-50 transition-colors font-semibold cursor-pointer text-red-600 flex items-center gap-3 border-t border-gray-100'
+                      className='w-full text-left px-4 py-3 hover:bg-red-100 transition-colors font-medium cursor-pointer text-red-700 hover:text-red-800 flex items-center gap-3 border-t border-gray-200 mt-2 rounded-lg mx-2'
                       role="menuitem"
                     >
-                      <FaSignOutAlt className="text-red-500" />
+                      <FaSignOutAlt className="text-red-600" />
                       Logout
                     </button>
                   </>
@@ -266,20 +267,20 @@ const MenuDropdown = () => {
                     <Link
                       to='/login'
                       onClick={handleLinkClick}
-                      className='px-4 py-3 hover:bg-blue-50 transition-colors font-semibold text-blue-600 flex items-center gap-3'
+                      className='px-4 py-3 hover:bg-blue-100 transition-colors font-medium text-blue-700 hover:text-blue-800 flex items-center gap-3 rounded-lg mx-2'
                       role="menuitem"
                     >
-                      <FaSignInAlt className="text-blue-500" />
+                      <FaSignInAlt className="text-blue-600" />
                       Login
                     </Link>
 
                     <Link
                       to='/signup'
                       onClick={handleLinkClick}
-                      className='px-4 py-3 hover:bg-green-50 transition-colors font-semibold text-green-600 flex items-center gap-3'
+                      className='px-4 py-3 hover:bg-green-100 transition-colors font-medium text-green-700 hover:text-green-800 flex items-center gap-3 rounded-lg mx-2'
                       role="menuitem"
                     >
-                      <FaUserPlus className="text-green-500" />
+                      <FaUserPlus className="text-green-600" />
                       Sign Up
                     </Link>
                   </>
