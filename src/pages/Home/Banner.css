@@ -1,0 +1,211 @@
+/* Banner.css */
+
+/* Container for the video */
+.video-container {
+  position: relative;
+  width: 100%;
+  height: 80vh;
+  overflow: hidden;
+}
+
+/* Video styling */
+.video-container video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensure the video fills the container */
+}
+
+/* Text Overlay */
+.text-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  text-align: center;
+  width: 90%;
+}
+
+/* Exciting, Large Font for Text */
+.animated-text {
+  font-size: 4rem;
+  padding: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  background: linear-gradient(
+    90deg,
+    rgba(2, 51, 59, 0),
+    rgb(179, 228, 123),
+    rgb(229, 93, 202),
+    rgb(172, 172, 161)
+  );
+  background-size: 400% 400%;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: gradientAnimation 5s ease infinite,
+    textGlow 1.5s ease-in-out infinite alternate;
+}
+
+/* Gradient Animation */
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+/* Add a shadow effect for the text to make it pop more */
+.animated-text::before {
+  content: " ";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4); /* Add a subtle dark overlay */
+  border-radius: 10px;
+  z-index: -1; /* Place the overlay behind the text */
+  animation: pulseShadow 2s infinite alternate;
+}
+
+/* Pulse effect for shadow */
+@keyframes pulseShadow {
+  0% {
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.5), 0 0 60px rgba(6, 245, 102, 0.5);
+  }
+  100% {
+    box-shadow: 0 0 70px #f1083e, 0 0 120px rgb(231, 15, 231);
+  }
+}
+
+/* Buttons Container */
+.button-container {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 20px;
+}
+
+/* Buttons with Color Animation */
+.animated-button {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: bold;
+  color: white;
+  background: rgba(0, 0, 0, 0.6);
+  border: 2px solid white;
+  border-radius: 25px;
+  cursor: pointer;
+  animation: buttonColorChange 3s ease infinite alternate;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+/* Button Hover Effect */
+.animated-button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+}
+
+/* Color Changing Animation */
+@keyframes buttonColorChange {
+  0% {
+    background-color: rgba(0, 0, 0, 0.6);
+    border-color: white;
+  }
+  50% {
+    background-color: rgb(36, 66, 2);
+    border-color: rgb(229, 93, 202);
+  }
+  100% {
+    /* background-color: rgb(229, 93, 202); */
+    border-color: rgba(255, 255, 0, 1);
+  }
+}
+
+/* Responsive adjustments for video container */
+@media screen and (max-width: 1440px) {
+  .video-container {
+    height: 75vh;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .video-container {
+    height: 70vh;
+  }
+  .animated-text {
+    font-size: 3rem;
+    letter-spacing: 3px;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .video-container {
+    height: 65vh;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .video-container {
+    height: 60vh;
+  }
+  .animated-text {
+    font-size: 2.5rem;
+    letter-spacing: 2px;
+  }
+  .button-container {
+    flex-direction: column; /* Stack buttons vertically */
+    gap: 0.5rem;
+  }
+  .animated-button {
+    padding: 0.5rem 1rem;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .video-container {
+    height: 55vh;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .video-container {
+    height: 50vh;
+  }
+  .animated-text {
+    font-size: 0.5rem;
+    letter-spacing: 1px;
+  }
+
+  .animated-button {
+    font-size: 0.35rem;
+  }
+  .button-container {
+    display: flex;
+    flex-direction: row;
+    /* border: 1px solid white; */
+    margin-top: 5px;
+    gap: 0;
+  }
+  .text-overlay {
+    width: 85%;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .video-container {
+    height: 45vh;
+  }
+}
+
+@media screen and (orientation: landscape) and (max-height: 600px) {
+  .video-container {
+    height: 85vh;
+  }
+}
