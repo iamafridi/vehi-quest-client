@@ -1,14 +1,26 @@
 import { Outlet } from 'react-router-dom'
 import Navbar from '../components/Shared/Navbar/Navbar'
 import Footer from '../components/Shared/Footer/Footer'
+
 const Main = () => {
   return (
-    <div>
-      <Navbar />
-      <div className='pt-24 min-h-[calc(100vh-68px)]'>
-        <Outlet />
+    <div className="min-h-screen w-full bg-[#FFF5F2] overflow-x-hidden">
+      {/* Navigation Bar */}
+      <div className="z-50 ">
+        <Navbar />
       </div>
-      <Footer />
+
+      {/* Main Content Container */}
+      <div className="relative z-10">
+        <div className=" min-h-[calc(100vh-68px)]">
+          <Outlet />
+        </div>
+      </div>
+
+      {/* Footer */}
+      <div className="relative z-10">
+        <Footer />
+      </div>
     </div>
   )
 }
