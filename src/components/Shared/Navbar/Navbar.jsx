@@ -36,7 +36,7 @@ const Navbar = () => {
         fixed top-0 w-full z-50 transition-all duration-300 ease-in-out
         ${scrolled
           ? 'bg-[#FFF5F2]/95 backdrop-blur-md shadow-lg border-b border-gray-200/60'
-          : 'bg-[#FFF5F2]/20 shadow-sm border-b border-gray-200/40'
+          : 'hover:bg-zinc-200/80 shadow-sm border-b border-gray-200/40'
         }
         ${isVisible ? 'translate-y-0' : '-translate-y-full'}
       `}
