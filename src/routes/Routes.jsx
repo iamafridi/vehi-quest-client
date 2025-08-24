@@ -8,7 +8,6 @@ import VehicleDetails from '../pages/VehicleDetails/VehicleDetails'
 import PrivateRoute from './PrivateRoute'
 import { getVehicle } from '../api/vehicles'
 import DashboardLayout from '../layouts/DashboardLayout'
-
 import MyListings from '../pages/Dashboard/Host/MyListings'
 import HostRoute from './HostRoute'
 import AdminRoute from './AdminRoute'
