@@ -27,62 +27,81 @@ export const router = createBrowserRouter([
       {
         path: '/',
         element: <Home />,
-      }, {
+      },
+      {
         path: '/vehicle/:id',
-        element: (<PrivateRoute><VehicleDetails></VehicleDetails></PrivateRoute>
+        element: (
+          <PrivateRoute>
+            <VehicleDetails />
+          </PrivateRoute>
         ),
         loader: ({ params }) => getVehicle(params.id)
-
       }
     ],
   },
-  { path: '/login', element: <Login /> },
-  { path: '/signup', element: <SignUp /> },
+  {
+    path: '/login',
+    element: <Login />
+  },
+  {
+    path: '/signup',
+    element: <SignUp />
+  },
   {
     path: '/dashboard',
-    element: <PrivateRoute><DashboardLayout /></PrivateRoute>,
+    element: (
+      <PrivateRoute>
+        <DashboardLayout />
+      </PrivateRoute>
+    ),
     children: [
       {
         index: true,
+        element: <Statistics />
+      },
+      // Host routes
+      {
+        path: 'add-vehicle',
         element: (
-          <PrivateRoute><Statistics /></PrivateRoute>
+          <HostRoute>
+            <AddVehicle />
+          </HostRoute>
         )
       },
       {
-        path: 'add-vehicle',
-        element: <PrivateRoute>
-          <HostRoute><AddVehicle /></HostRoute>
-        </PrivateRoute>
+        path: 'my-listings',
+        element: (
+          <HostRoute>
+            <MyListings />
+          </HostRoute>
+        )
       },
       {
-        path: 'my-listings',
-        element: <PrivateRoute><HostRoute><MyListings /></HostRoute></PrivateRoute>
+        path: 'manage-bookings',
+        element: (
+          <HostRoute>
+            <ManageBookings />
+          </HostRoute>
+        )
       },
-      // ***Admin***
+      // Admin routes
       {
         path: 'manage-users',
-        element: <PrivateRoute>
+        element: (
           <AdminRoute>
             <ManageUser />
           </AdminRoute>
-        </PrivateRoute>
+        )
       },
-      // Common
+      // Common routes (accessible to all authenticated users)
       {
         path: 'profile',
-        element: <PrivateRoute><Profile /></PrivateRoute>
+        element: <Profile />
       },
       {
         path: 'my-bookings',
-        element: <PrivateRoute><MyBookings /></PrivateRoute>
-      },
-
-      // Host route
-      {
-        path: 'manage-bookings',
-        element: <HostRoute><ManageBookings /></HostRoute>
+        element: <MyBookings />
       }
-
     ]
   }
 ])

@@ -18,6 +18,17 @@ export const saveUser = async (user) => {
     throw error;
   }
 };
+//  makeUserAdmin
+export const makeUserAdmin = async (email) => {
+  try {
+    const result = await updateRole({ email, role: "admin" });
+    console.log(`Successfully made ${email} an admin!`);
+    return result;
+  } catch (error) {
+    console.error("Error making user admin:", error);
+    throw error;
+  }
+};
 
 // Getting token from Server
 export const getToken = async (email) => {
@@ -43,16 +54,24 @@ export const clearCookie = async () => {
 };
 
 // Get User Role
+// export const getRole = async (email) => {
+//   try {
+//     const { data } = await axiosSecure(`/user/${email}`);
+//     return data.role;
+//   } catch (error) {
+//     console.error("Error getting user role:", error);
+//     throw error;
+//   }
+// };
 export const getRole = async (email) => {
   try {
-    const { data } = await axiosSecure(`/user/${email}`);
+    const { data } = await axiosSecure(`/users/${email}`); // Changed from /user/ to /users/
     return data.role;
   } catch (error) {
     console.error("Error getting user role:", error);
     throw error;
   }
 };
-
 // Get All Users
 export const getAllUsers = async () => {
   try {
