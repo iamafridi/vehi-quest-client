@@ -7,7 +7,7 @@ import useAuth from "../../hooks/useAuth";
 
 
 
-const VehicalReservation = ({ vehicle }) => {
+const VehicleReservation = ({ vehicle }) => {
     const { user } = useAuth();
     let [isOpen, setIsOpen] = useState(false)
 
@@ -94,4 +94,4 @@ const VehicalReservation = ({ vehicle }) => {
     );
 };
 
-export default VehicalReservation;
+export default VehicleReservation;
