@@ -1,3 +1,37 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.animated-text-logo {
+  padding: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  background: linear-gradient(
+    90deg,
+    rgba(2, 51, 59, 0),
+    rgb(134, 231, 23),
+    rgb(218, 10, 176),
+    rgb(33, 33, 32)
+  );
+  background-size: 400% 400%;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: gradientAnimation 5s ease infinite,
+    1.5s ease-in-out infinite alternate;
+  position: relative;
+}
+
+/* Add the missing keyframe animations */
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}

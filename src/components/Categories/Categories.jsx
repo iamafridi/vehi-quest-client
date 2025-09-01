@@ -10,7 +10,7 @@ const Categories = () => {
     return (
         <Container>
             <div
-                className=" border-2 shadow-slate-400 shadow-lg rounded-full mt-2
+                className=" border-2 bg-white shadow-slate-400 shadow-lg rounded-full -mt-12 relative
           pt-4 
           flex 
           gap-4

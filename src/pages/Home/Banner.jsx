@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import "./Banner.css";
 import video from "../../assets/Banner/videoplayback.mp4";
 import { Link } from "react-router-dom";
-import Navbar from "../../components/Shared/Navbar/Navbar";
 
 const BannerCarousel = () => {
     // Text content array
@@ -29,7 +28,7 @@ const BannerCarousel = () => {
     }, []);
 
     return (
-        <div className="video-container relative">
+        <div className="video-container ">
 
             {/* Insert a video with reduced height */}
             <video
@@ -45,7 +44,7 @@ const BannerCarousel = () => {
 
             {/* Text Overlay */}
             <div className="text-overlay absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center px-4">
-                <h2 className="animated-text text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 drop-shadow-lg">
+                <h2 className="animated-text italic text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 drop-shadow-lg">
                     {texts[currentText]}
                 </h2>
 

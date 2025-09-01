@@ -4,7 +4,7 @@
 .video-container {
   position: relative;
   width: 100%;
-  height: 80vh;
+  height: 90vh;
   overflow: hidden;
 }
 
@@ -40,7 +40,7 @@
     rgb(229, 93, 202),
     rgb(172, 172, 161)
   );
-  background-size: 400% 400%;
+  /* background-size: 400% 400%; */
   color: transparent;
   -webkit-background-clip: text;
   background-clip: text;
@@ -60,28 +60,23 @@
     background-position: 0% 50%;
   }
 }
-/* Add a shadow effect for the text to make it pop more */
+
 .animated-text::before {
-  content: " ";
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.4); /* Add a subtle dark overlay */
-  border-radius: 10px;
-  z-index: -1; /* Place the overlay behind the text */
-  animation: pulseShadow 2s infinite alternate;
-}
 
-/* Pulse effect for shadow */
-@keyframes pulseShadow {
-  0% {
-    box-shadow: 0 0 20px rgba(0, 255, 255, 0.5), 0 0 60px rgba(6, 245, 102, 0.5);
-  }
-  100% {
-    box-shadow: 0 0 70px #f1083e, 0 0 120px rgb(231, 15, 231);
-  }
+  /* no background box */
+  background: transparent;
+
+  /* just a static shadow */
+  box-shadow: 0 0 30px rgba(0, 255, 255, 0.5), 0 0 60px rgba(6, 245, 102, 0.5);
+
+  border-radius: 10px;
+  z-index: -1; /* stays behind the text */
 }
 
 /* Buttons Container */

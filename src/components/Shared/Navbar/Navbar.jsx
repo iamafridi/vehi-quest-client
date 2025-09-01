@@ -34,10 +34,7 @@ const Navbar = () => {
     <nav
       className={`
         fixed top-0 w-full z-50 transition-all duration-300 ease-in-out
-        ${scrolled
-          ? 'bg-[#FFF5F2]/95 backdrop-blur-md shadow-lg border-b border-gray-200/60'
-          : 'hover:bg-zinc-200/80 shadow-sm border-b border-gray-200/40'
-        }
+        
         ${isVisible ? 'translate-y-0' : '-translate-y-full'}
       `}
       role="navigation"
@@ -48,31 +45,10 @@ const Navbar = () => {
           <div className="flex flex-row items-center justify-between gap-2 sm:gap-3 md:gap-6">
 
             {/* Logo Section */}
-            <div className="flex-shrink-0 z-10">
+            <div className="flex-shrink-0 bg-white/70 rounded-full z-10">
               <Logo />
             </div>
 
-            {/* Desktop Navigation Space */}
-            <div className="hidden lg:flex flex-1 items-center justify-center space-x-8">
-              {/* Future navigation items can go here */}
-              <div className="flex items-center space-x-6">
-                {/* Example nav items - uncomment when ready */}
-                {/*
-                <a href="#" className="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200">
-                  Home
-                </a>
-                <a href="#" className="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200">
-                  Vehicles
-                </a>
-                <a href="#" className="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200">
-                  About
-                </a>
-                <a href="#" className="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200">
-                  Contact
-                </a>
-                */}
-              </div>
-            </div>
 
             {/* Menu Dropdown */}
             <div className="flex items-center space-x-1 sm:space-x-2 md:space-x-4">

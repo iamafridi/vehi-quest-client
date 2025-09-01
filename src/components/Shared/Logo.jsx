@@ -11,7 +11,7 @@ const Logo = () => {
                 width='100'
                 height='100'
             />
-            <h3 className='font-bold uppercase -ml-3 text-xl  '>VehiQuest</h3>
+            <h3 className='font-bold animated-text-logo uppercase -ml-5 text-xl  '>VehiQuest</h3>
         </Link>
     );
 };
