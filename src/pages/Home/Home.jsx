@@ -2,6 +2,7 @@ import { Helmet } from "react-helmet-async"
 import Categories from "../../components/Categories/Categories"
 import Vehicles from "../../components/Vehicles/Vehices"
 import Banner from "./Banner"
+import HomePart2 from "./HomePart2/HomePart2"
 
 const Home = () => {
   return (
@@ -18,6 +19,9 @@ const Home = () => {
 
       {/* Vehicle Section */}
       <Vehicles />
+
+      <HomePart2 />
+
     </div>
   )
 }

@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: font1;
+  src: url(../src/assets/font/Lausanne-300.woff2);
+}
+@font-face {
+  font-family: font2;
+  src: url(../src/assets/font/Lausanne-500.woff2);
+}
+
 .animated-text-logo {
   padding: 10px;
   font-weight: 800;
