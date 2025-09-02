@@ -45,7 +45,7 @@ const Navbar = () => {
           <div className="flex flex-row items-center justify-between gap-2 sm:gap-3 md:gap-6">
 
             {/* Logo Section */}
-            <div className="flex-shrink-0 bg-white/70 rounded-full z-10">
+            <div className="flex-shrink-0  rounded-full z-10">
               <Logo />
             </div>
 

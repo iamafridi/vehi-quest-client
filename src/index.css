@@ -1,6 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+p {
+  font-family: font1;
+}
 
 @font-face {
   font-family: font1;
@@ -12,10 +15,11 @@
 }
 
 .animated-text-logo {
-  padding: 10px;
+  padding: 4px 6px;
   font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 1.5px;
+  letter-spacing: 0.8px;
+  font-size: 10px; /* Base mobile size */
   background: linear-gradient(
     90deg,
     rgb(3, 52, 99),
@@ -28,12 +32,53 @@
   color: transparent;
   -webkit-background-clip: text;
   background-clip: text;
-  animation: gradientAnimation 5s ease infinite,
-    1.5s ease-in-out infinite alternate;
+  animation: gradientAnimation 5s ease infinite;
   position: relative;
+
+  /* Small phones (375px+) */
+  @media (min-width: 375px) {
+    font-size: 11px;
+    padding: 4px 7px;
+    letter-spacing: 0.9px;
+  }
+
+  /* Small screens (640px+) */
+  @media (min-width: 640px) {
+    font-size: 12px;
+    padding: 5px 8px;
+    letter-spacing: 1px;
+  }
+
+  /* Medium screens (768px+) */
+  @media (min-width: 768px) {
+    font-size: 14px;
+    padding: 6px 10px;
+    letter-spacing: 1.2px;
+  }
+
+  /* Large screens (1024px+) */
+  @media (min-width: 1024px) {
+    font-size: 16px;
+    padding: 8px 12px;
+    letter-spacing: 1.4px;
+  }
+
+  /* Extra large screens (1280px+) */
+  @media (min-width: 1280px) {
+    font-size: 18px;
+    padding: 10px 14px;
+    letter-spacing: 1.6px;
+  }
+
+  /* 2XL screens (1536px+) */
+  @media (min-width: 1536px) {
+    font-size: 20px;
+    padding: 12px 16px;
+    letter-spacing: 1.8px;
+  }
 }
 
-/* Add the missing keyframe animations */
+/* Add the keyframe animations */
 @keyframes gradientAnimation {
   0% {
     background-position: 0% 50%;
