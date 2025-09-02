@@ -9,7 +9,7 @@ const DashboardLayout = () => {
       <div className='flex-1  md:ml-64'>
         <div className='p-5'>
           {/* Outlet for dynamic contents */}
-          <Outlet/>
+          <Outlet />
         </div>
       </div>
     </div>

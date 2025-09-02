@@ -83,7 +83,7 @@ const Card = memo(({ vehicle, priority = false }) => {
                 </div>
 
                 {/* Content Container */}
-                <div className="flex flex-col gap-2 flex-1">
+                <div className="flex flex-col font-[font1] gap-2 flex-1">
                     {/* Location */}
                     <div className="
                         font-semibold 

@@ -3,7 +3,7 @@ import "./Footer.css"
 
 const Footer = () => {
   return (
-    <div className="bg-gradient-to-t from-black/60 rounded-ss-xl mt-20 ">
+    <div className="bg-gradient-to-t from-black/40 rounded-ss-xl mt-20 ">
 
       <footer className=" text-gray-50 rounded-ss-xl rounded-se-xl">
         <div className="mx-auto -mt-20 max-w-screen-xl px-4 pb-8 pt-16 sm:px-6 lg:px-8">
@@ -34,13 +34,13 @@ const Footer = () => {
           <div className="animated-container -mb-20 overflow-hidden truncate">
             <h1 className="animated-text-2 italic ">Vehi-quest</h1>
           </div>
-          <div className="mt-16 grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-32">
+          <div className="mt-16 grid grid-cols-1 font-[font1] gap-8 lg:grid-cols-2 lg:gap-32">
             <div className="mx-auto max-w-sm lg:max-w-none">
               <p className="mt-4 text-center text-gray-50 lg:text-left lg:text-lg">
                 Explore the world with the Vehi-quest.
               </p>
 
-              <div className="mt-6 flex justify-center gap-4 lg:justify-start">
+              <div className="mt-6 flex justify-center  gap-4 lg:justify-start">
                 <a
                   className="text-gray-50 transition hover:text-gray-50/75"
                   href=""
@@ -126,7 +126,7 @@ const Footer = () => {
               </div>
             </div>
 
-            <div className="grid grid-cols-1 gap-8 text-center lg:grid-cols-3 lg:text-left">
+            <div className="grid grid-cols-1 gap-8 text-center font-[font1] lg:grid-cols-3 lg:text-left">
               <div>
                 <strong className="font-medium text-gray-50"> Services </strong>
 
@@ -200,10 +200,10 @@ const Footer = () => {
             </div>
           </div>
 
-          <div className="mt-16 border-t border-gray-100 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
+          <div className="mt-16 border-t border-gray-100 pt-8 font-[font1] flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
             {/* Copyright */}
-            <p className="text-gray-200 text-sm md:text-base">
-              ©Vehi-quest 2023. All rights reserved.
+            <p className="text-gray-200 font-[font1] text-sm md:text-base">
+              © Vehi-quest 2023. All rights reserved.
             </p>
 
             {/* LinkedIn */}

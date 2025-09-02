@@ -1,6 +1,6 @@
 import HomeBottomText from "./HeroBottomText"
 import HomeHeroText from "./HomeHeroText"
-import videoSrc from '/src/assets/Banner/videoplayback2.mp4'
+import videoSrc from '/src/assets/Banner/videoplayback.mp4'
 
 const HomePart2 = () => {
     return (

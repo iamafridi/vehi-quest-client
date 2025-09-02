@@ -73,11 +73,11 @@ const Sidebar = () => {
                 label='Statistics'
                 address='/dashboard'
               />
-              <MenuItem
+              {/* <MenuItem
                 icon={FaAddressBook}
                 label='My bookings'
                 address='/dashboard/my-bookings'
-              />
+              /> */}
 
 
 

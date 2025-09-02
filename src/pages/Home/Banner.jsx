@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import "./Banner.css";
-import video from "../../assets/Banner/videoplayback.mp4";
+import video from "../../assets/Banner/videoplayback2.mp4";
 import { Link } from "react-router-dom";
 
 const BannerCarousel = () => {
