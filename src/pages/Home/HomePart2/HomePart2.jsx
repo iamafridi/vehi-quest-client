@@ -4,11 +4,11 @@ import videoSrc from '/src/assets/Banner/videoplayback.mp4'
 
 const HomePart2 = () => {
     return (
-        <div className='text-white relative min-h-screen my-5 rounded overflow-hidden'>
+        <div className='text-white relative min-h-screen my-5 rounded-s-full rounded-e-full px-2 overflow-hidden'>
             {/* Background Video */}
             <div className='absolute inset-0 z-0'>
                 <video
-                    className='h-full w-full object-fill'
+                    className='h-full w-full '
                     autoPlay
                     loop
                     muted

@@ -44,27 +44,75 @@ export const addVehicle = async (vehicleData) => {
   }
 };
 
-// Delete a Vehicle
+// Add these functions to your api/vehicles.js file
+
+// Delete a vehicle
 export const deleteVehicle = async (id) => {
   try {
-    const { data } = await axiosSecure.delete(`/vehicles/${id}`);
-    return data;
+    console.log("Deleting vehicle with ID:", id);
+    const response = await axiosSecure.delete(`/vehicles/${id}`);
+    console.log("Vehicle deleted:", response.data);
+    return response.data;
   } catch (error) {
-    console.error("Error deleting vehicle:", error);
+    console.error(
+      "Error deleting vehicle:",
+      error.response?.data || error.message
+    );
     throw error;
   }
 };
 
 // Update a vehicle
-export const updateVehicle = async (vehicleData, id) => {
+export const updateVehicle = async (id, vehicleData) => {
   try {
-    const { data } = await axiosSecure.put(`/vehicles/${id}`, vehicleData);
-    return data;
+    console.log("Updating vehicle with ID:", id, "Data:", vehicleData);
+    const response = await axiosSecure.put(`/vehicles/${id}`, vehicleData);
+    console.log("Vehicle updated:", response.data);
+    return response.data;
   } catch (error) {
-    console.error("Error updating vehicle:", error);
+    console.error(
+      "Error updating vehicle:",
+      error.response?.data || error.message
+    );
     throw error;
   }
 };
+
+// Get single vehicle for editing (if you don't have this already)
+export const getVehicleById = async (id) => {
+  try {
+    const response = await axiosSecure.get(`/vehicle/${id}`);
+    return response.data;
+  } catch (error) {
+    console.error(
+      "Error getting vehicle:",
+      error.response?.data || error.message
+    );
+    throw error;
+  }
+};
+
+// // Delete a Vehicle
+// export const deleteVehicle = async (id) => {
+//   try {
+//     const { data } = await axiosSecure.delete(`/vehicles/${id}`);
+//     return data;
+//   } catch (error) {
+//     console.error("Error deleting vehicle:", error);
+//     throw error;
+//   }
+// };
+
+// // Update a vehicle
+// export const updateVehicle = async (vehicleData, id) => {
+//   try {
+//     const { data } = await axiosSecure.put(`/vehicles/${id}`, vehicleData);
+//     return data;
+//   } catch (error) {
+//     console.error("Error updating vehicle:", error);
+//     throw error;
+//   }
+// };
 
 // import axiosSecure from ".";
 
