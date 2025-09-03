@@ -1,5 +1,3 @@
-/* Banner.css */
-
 /* Container for the video */
 .video-container {
   position: relative;
@@ -21,7 +19,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  color: #fff;
+  color: #dad2d2;
   text-align: center;
   width: 90%;
 }
@@ -33,50 +31,26 @@
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 5px;
-  background: linear-gradient(
-    90deg,
-    rgba(2, 51, 59, 0),
-    rgb(179, 228, 123),
-    rgb(229, 93, 202),
-    rgb(172, 172, 161)
-  );
-  /* background-size: 400% 400%; */
-  color: transparent;
-  -webkit-background-clip: text;
-  background-clip: text;
-  animation: gradientAnimation 5s ease infinite,
-    textGlow 1.5s ease-in-out infinite alternate;
+  color: #ffffff;
+  text-shadow: 0 0 12px rgba(4, 190, 211, 0.8), 0 0 24px rgba(4, 190, 211, 0.6);
+  animation: textGlowPulse 3s ease-in-out infinite;
+  word-wrap: break-word;
+  line-height: 1.2;
 }
 
-/* Gradient Animation */
-@keyframes gradientAnimation {
+/* Subtle breathing glow */
+@keyframes textGlowPulse {
   0% {
-    background-position: 0% 50%;
+    text-shadow: 0 0 12px rgba(4, 190, 211, 0.8),
+      0 0 24px rgba(4, 190, 211, 0.6);
   }
   50% {
-    background-position: 100% 50%;
+    text-shadow: 0 0 18px rgba(4, 190, 211, 1), 0 0 32px rgba(4, 190, 211, 0.8);
   }
   100% {
-    background-position: 0% 50%;
+    text-shadow: 0 0 12px rgba(4, 190, 211, 0.8),
+      0 0 24px rgba(4, 190, 211, 0.6);
   }
-}
-
-.animated-text::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-
-  /* no background box */
-  background: transparent;
-
-  /* just a static shadow */
-  box-shadow: 0 0 30px rgba(0, 255, 255, 0.5), 0 0 60px rgba(6, 245, 102, 0.5);
-
-  border-radius: 10px;
-  z-index: -1; /* stays behind the text */
 }
 
 /* Buttons Container */
@@ -85,9 +59,10 @@
   justify-content: center;
   gap: 1rem;
   margin-top: 20px;
+  flex-wrap: wrap; /* ensures buttons don't overflow */
 }
 
-/* Buttons with Color Animation */
+/* Buttons */
 .animated-button {
   padding: 0.75rem 1.5rem;
   font-size: 1rem;
@@ -99,6 +74,7 @@
   cursor: pointer;
   animation: buttonColorChange 3s ease infinite alternate;
   transition: transform 0.3s ease, background 0.3s ease;
+  white-space: nowrap; /* prevent text break */
 }
 
 /* Button Hover Effect */
@@ -107,29 +83,7 @@
   box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
 }
 
-/* Color Changing Animation */
-@keyframes buttonColorChange {
-  0% {
-    background-color: rgba(0, 0, 0, 0.6);
-    border-color: white;
-  }
-  50% {
-    background-color: rgb(36, 66, 2);
-    border-color: rgb(229, 93, 202);
-  }
-  100% {
-    /* background-color: rgb(229, 93, 202); */
-    border-color: rgba(255, 255, 0, 1);
-  }
-}
-
-/* Responsive adjustments for video container */
-@media screen and (max-width: 1440px) {
-  .video-container {
-    height: 75vh;
-  }
-}
-
+/* Responsive adjustments */
 @media screen and (max-width: 1200px) {
   .video-container {
     height: 70vh;
@@ -151,21 +105,25 @@
     height: 60vh;
   }
   .animated-text {
-    font-size: 2.5rem;
+    font-size: 2.2rem;
     letter-spacing: 2px;
   }
   .button-container {
-    flex-direction: column; /* Stack buttons vertically */
-    gap: 0.5rem;
+    flex-direction: column;
+    gap: 0.75rem;
   }
   .animated-button {
-    padding: 0.5rem 1rem;
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
   }
 }
 
 @media screen and (max-width: 576px) {
   .video-container {
     height: 55vh;
+  }
+  .animated-text {
+    font-size: 1.8rem;
   }
 }
 
@@ -174,22 +132,15 @@
     height: 50vh;
   }
   .animated-text {
-    font-size: 0.5rem;
+    font-size: 1.4rem;
     letter-spacing: 1px;
   }
-
   .animated-button {
-    font-size: 0.35rem;
-  }
-  .button-container {
-    display: flex;
-    flex-direction: row;
-    /* border: 1px solid white; */
-    margin-top: 5px;
-    gap: 0;
+    font-size: 0.8rem;
+    padding: 0.5rem 1rem;
   }
   .text-overlay {
-    width: 85%;
+    width: 95%;
   }
 }
 
@@ -197,10 +148,11 @@
   .video-container {
     height: 45vh;
   }
-}
-
-@media screen and (orientation: landscape) and (max-height: 600px) {
-  .video-container {
-    height: 85vh;
+  .animated-text {
+    font-size: 1.1rem;
+  }
+  .animated-button {
+    font-size: 0.7rem;
+    padding: 0.4rem 0.8rem;
   }
 }

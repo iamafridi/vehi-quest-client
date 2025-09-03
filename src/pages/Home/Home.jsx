@@ -14,6 +14,7 @@ const Home = () => {
       {/* Banner Carousel */}
       <Banner />
 
+
       {/* Category Section */}
       <Categories />
 

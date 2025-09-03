@@ -10,7 +10,7 @@ const Categories = () => {
     return (
         <Container>
             <div
-                className=" border-2 font-[font1] bg-white shadow-slate-400 shadow-lg rounded-full -mt-12 relative
+                className="bg-white bg-gradient-to-br from-black/10 border-red-900 border-t-2 font-[font1] shadow-slate-400 shadow-lg rounded-full -mt-12 relative
           pt-4 
           flex 
           gap-4

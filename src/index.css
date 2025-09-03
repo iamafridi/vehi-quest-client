@@ -13,6 +13,21 @@ p {
   font-family: font2;
   src: url(../src/assets/font/Lausanne-500.woff2);
 }
+.clip-v {
+  clip-path: polygon(
+    30% 0%,
+    70% 0%,
+    100% 30%,
+    100% 70%,
+    70% 100%,
+    30% 100%,
+    0% 70%,
+    0% 30%
+  );
+}
+.clip-circle {
+  clip-path: circle(50% at 50% 50%);
+}
 
 .animated-border {
   cursor: pointer;
