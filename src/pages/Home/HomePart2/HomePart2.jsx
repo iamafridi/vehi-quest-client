@@ -4,7 +4,7 @@ import videoSrc from '/src/assets/Banner/videoplayback.mp4'
 
 const HomePart2 = () => {
     return (
-        <div className='text-white relative my-3 xs:my-4 sm:my-5 md:my-6 lg:my-5 rounded-s-full rounded-e-full px-1 xs:px-2 sm:px-3 md:px-2 lg:px-2 overflow-hidden min-h-[60vh] xs:min-h-[65vh] sm:min-h-[70vh] md:min-h-[75vh] lg:min-h-[80vh] transform-gpu'>
+        <div className='text-white relative mt-10 xs:my-4 sm:my-5 md:my-6 lg:my-5 rounded-s-full rounded-e-full px-1 xs:px-2 sm:px-3 md:px-2 lg:px-2 overflow-hidden min-h-[60vh] xs:min-h-[65vh] sm:min-h-[70vh] md:min-h-[75vh] lg:min-h-[80vh] transform-gpu'>
             {/* Background Video */}
             <div className='absolute inset-0 z-0 transform translate3d-0'>
                 <video

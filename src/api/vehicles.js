@@ -1,9 +1,13 @@
 import axiosSecure from ".";
 
-// Fetch all vehicle from DB
-export const getAllVehicles = async () => {
+// Fetch all vehicles from DB with optional category filtering
+export const getAllVehicles = async (category = null) => {
   try {
-    const { data } = await axiosSecure("/vehicles");
+    let url = "/vehicles";
+    if (category && category !== "all") {
+      url += `?category=${encodeURIComponent(category)}`;
+    }
+    const { data } = await axiosSecure(url);
     return data;
   } catch (error) {
     console.error("Error getting all vehicles:", error);
@@ -11,10 +15,10 @@ export const getAllVehicles = async () => {
   }
 };
 
-// Fetch all Vehicle for host
+// Fetch all Vehicle for host (FIXED ENDPOINT)
 export const getHostVehicles = async (email) => {
   try {
-    const { data } = await axiosSecure(`/vehicles/${email}`);
+    const { data } = await axiosSecure(`/vehicles/host/${email}`);
     return data;
   } catch (error) {
     console.error("Error getting host vehicles:", error);
@@ -43,8 +47,6 @@ export const addVehicle = async (vehicleData) => {
     throw error;
   }
 };
-
-// Add these functions to your api/vehicles.js file
 
 // Delete a vehicle
 export const deleteVehicle = async (id) => {
@@ -78,7 +80,7 @@ export const updateVehicle = async (id, vehicleData) => {
   }
 };
 
-// Get single vehicle for editing (if you don't have this already)
+// Get single vehicle for editing
 export const getVehicleById = async (id) => {
   try {
     const response = await axiosSecure.get(`/vehicle/${id}`);
@@ -91,61 +93,3 @@ export const getVehicleById = async (id) => {
     throw error;
   }
 };
-
-// // Delete a Vehicle
-// export const deleteVehicle = async (id) => {
-//   try {
-//     const { data } = await axiosSecure.delete(`/vehicles/${id}`);
-//     return data;
-//   } catch (error) {
-//     console.error("Error deleting vehicle:", error);
-//     throw error;
-//   }
-// };
-
-// // Update a vehicle
-// export const updateVehicle = async (vehicleData, id) => {
-//   try {
-//     const { data } = await axiosSecure.put(`/vehicles/${id}`, vehicleData);
-//     return data;
-//   } catch (error) {
-//     console.error("Error updating vehicle:", error);
-//     throw error;
-//   }
-// };
-
-// import axiosSecure from ".";
-
-// // Fetch all vehicle from DB
-// export const getAllVehicles = async () => {
-//   const { data } = await axiosSecure("/vehicles");
-//   return data;
-// };
-
-// // Fetch all Vehicle for host
-// export const getHostVehicles = async (email) => {
-//   const { data } = await axiosSecure(`/vehicles/${email}`);
-//   return data;
-// };
-
-// // Fetch Single Vehicle from DB
-// export const getVehicle = async (id) => {
-//   const { data } = await axiosSecure(`/vehicle/${id}`);
-//   return data;
-// };
-
-// // Save Vehicle Data in db
-// export const addVehicle = async (vehicleData) => {
-//   const { data } = await axiosSecure.post(`/vehicles`, vehicleData);
-//   return data;
-// };
-// // Delete a Vehicle
-// export const deleteVehicle = async id => {
-//   const { data } = await axiosSecure.delete(`/vehicles/${id}`)
-//   return data
-// }
-// // update a vehicle
-// export const updateVehicle = async (vehicleData, id) => {
-//   const { data } = await axiosSecure.put(`/vehicles/${id}`, vehicleData)
-//   return data
-// }
