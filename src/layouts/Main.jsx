@@ -11,7 +11,7 @@ const Main = () => {
       </div>
 
       {/* Main Content Container */}
-      <div className="relative z-10">
+      <div className="relative z-10 mt-20">
         <div className=" min-h-[calc(100vh-68px)]">
           <Outlet />
         </div>

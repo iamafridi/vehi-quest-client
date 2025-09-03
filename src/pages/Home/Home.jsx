@@ -6,7 +6,7 @@ import HomePart2 from "./HomePart2/HomePart2"
 
 const Home = () => {
   return (
-    <div>
+    <div className="-mt-20">
       <Helmet>
         <title>Home | VehiQuest | Rent Cars & Ride Safe</title>
       </Helmet>

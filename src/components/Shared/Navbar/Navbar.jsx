@@ -33,7 +33,7 @@ const Navbar = () => {
   return (
     <nav
       className={`
-        fixed top-0 w-full z-50 transition-all duration-300 ease-in-out
+        fixed top-0 w-full z-50  transition-all duration-300 ease-in-out
         
         ${isVisible ? 'translate-y-0' : '-translate-y-full'}
       `}
