@@ -15,6 +15,10 @@ src/assets/Banner/videoplayback.mp4
 src/assets/Banner/videoplayback2.mp4
 src/assets/Banner/videoplayback3.mp4
 src/assets/Banner/videoplayback4.mp4
+/src/assets/login/login1.mp4
+/src/assets/login/login2.mp4
+/src/assets/login/login3.mp4
+
 
 # Editor directories and files
 .vscode/*
