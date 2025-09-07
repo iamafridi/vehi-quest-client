@@ -6,7 +6,7 @@ import HomePart2 from "./HomePart2/HomePart2"
 
 const Home = () => {
   return (
-    <div className="-mt-20">
+    <div className="-mt-20 bg-gradient-to-b from-black/5">
       <Helmet>
         <title>Home | VehiQuest | Rent Cars & Ride Safe</title>
       </Helmet>
