@@ -121,7 +121,7 @@ const MenuDropdown = () => {
           ref={buttonRef}
           onClick={toggleDropdown}
           className={`
-            p-3 md:py-2 md:px-3 border border-neutral-300 bg-white
+            p-3 md:py-2 md:px-3 border border-neutral-300 bg-slate-50
             flex flex-row items-center gap-3 rounded-full 
             cursor-pointer hover:shadow-md hover:border-gray-400 hover:bg-gray-50
             transition-all duration-200
