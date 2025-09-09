@@ -18,17 +18,22 @@ const SignUp = () => {
 
   const slides = [
     {
-      video: "/src/assets/login/login3.mp4", // Replace with your actual video paths
+      video: "/src/assets/login/login3.mp4",
       title: "Join Our Community,",
       subtitle: "Start Your Journey"
     },
     {
-      video: "/src/assets/login/login2.mp4", // Replace with your actual video paths
+      video: "/src/assets/login/login2.mp4",
       title: "Discover Adventures,",
       subtitle: "Make Connections"
     },
     {
-      video: "/src/assets/login/login1.mp4", // Replace with your actual video paths
+      video: "/src/assets/login/login1.mp4",
+      title: "Create Your Story,",
+      subtitle: "Share Your Passion"
+    },
+    {
+      video: "/src/assets/login/login1.mp4",
       title: "Create Your Story,",
       subtitle: "Share Your Passion"
     }
