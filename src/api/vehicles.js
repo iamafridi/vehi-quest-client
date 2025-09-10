@@ -16,10 +16,21 @@ export const getAllVehicles = async (category = null) => {
 };
 
 // Fetch all Vehicle for host (FIXED ENDPOINT)
+// export const getHostVehicles = async (email) => {
+//   try {
+//     const { data } = await axiosSecure(`/vehicles/host/${email}`);
+//     return data;
+//   } catch (error) {
+//     console.error("Error getting host vehicles:", error);
+//     throw error;
+//   }
+// };
+// Fetch vehicles for a specific host (by email query param)
 export const getHostVehicles = async (email) => {
   try {
-    const { data } = await axiosSecure(`/vehicles/host/${email}`);
-    return data;
+    const { data } = await axiosSecure.get(`/vehicles`);
+    // Filter only the ones belonging to this host
+    return (data.data || []).filter((v) => v.host?.email === email);
   } catch (error) {
     console.error("Error getting host vehicles:", error);
     throw error;

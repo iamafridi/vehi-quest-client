@@ -1,6 +1,7 @@
 import { DateRange } from 'react-date-range'
 import { TbFidgetSpinner } from 'react-icons/tb'
 import { categories } from '../Categories/CategoriesData'
+
 const AddVehicleForm = ({
     handleSubmit,
     dates,
@@ -10,45 +11,52 @@ const AddVehicleForm = ({
     uploadButtonText,
 }) => {
     return (
-        <div className='w-full min-h-[calc(100vh-40px)] flex flex-col justify-center items-center text-gray-800 rounded-xl bg-gray-50'>
-            <form onSubmit={handleSubmit}>
-                <div className='grid grid-cols-1 lg:grid-cols-2 gap-10'>
-                    <div className='space-y-6'>
-                        <div className='space-y-1 text-sm'>
-                            <label htmlFor='location' className='block text-gray-600'>
-                                Location
-                            </label>
-                            <input
-                                className='w-full px-4 py-3 text-gray-800 border border-rose-300 focus:outline-rose-500 rounded-md '
-                                name='location'
-                                id='location'
-                                type='text'
-                                placeholder='Location'
-                                required
-                            />
-                        </div>
+        <form
+            onSubmit={handleSubmit}
+            className="w-full max-w-5xl mx-auto font-[font1] bg-white shadow-xl rounded-2xl p-8"
+        >
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
+                {/* Left Section */}
+                <div className="space-y-6">
+                    {/* Location */}
+                    <div className="space-y-1 text-sm">
+                        <label htmlFor="location" className="block text-gray-700 font-medium">
+                            Location
+                        </label>
+                        <input
+                            className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-rose-500 focus:outline-none"
+                            name="location"
+                            id="location"
+                            type="text"
+                            placeholder="Enter vehicle location"
+                            required
+                        />
+                    </div>
 
-                        <div className='space-y-1 text-sm'>
-                            <label htmlFor='category' className='block text-gray-600'>
-                                Category
-                            </label>
-                            <select
-                                required
-                                className='w-full px-4 py-3 border-rose-300 focus:outline-rose-500 rounded-md'
-                                name='category'
-                            >
-                                {categories.map(category => (
-                                    <option value={category.label} key={category.label}>
-                                        {category.label}
-                                    </option>
-                                ))}
-                            </select>
-                        </div>
+                    {/* Category */}
+                    <div className="space-y-1 text-sm">
+                        <label htmlFor="category" className="block text-gray-700 font-medium">
+                            Category
+                        </label>
+                        <select
+                            required
+                            className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-rose-500 focus:outline-none"
+                            name="category"
+                        >
+                            {categories.map((category) => (
+                                <option value={category.label} key={category.label}>
+                                    {category.label}
+                                </option>
+                            ))}
+                        </select>
+                    </div>
 
-                        <div className='space-y-1'>
-                            <label htmlFor='location' className='block text-gray-600'>
-                                Select Availability Range
-                            </label>
+                    {/* Date Range */}
+                    <div className="space-y-1">
+                        <label className="block text-gray-700 font-medium">
+                            Select Availability Range
+                        </label>
+                        <div className="rounded-xl overflow-hidden border border-gray-300 shadow-sm">
                             <DateRange
                                 rangeColors={['#F43F5E']}
                                 ranges={[dates]}
@@ -57,128 +65,116 @@ const AddVehicleForm = ({
                             />
                         </div>
                     </div>
-                    <div className='space-y-6'>
-                        <div className='space-y-1 text-sm'>
-                            <label htmlFor='title' className='block text-gray-600'>
-                                Title
+                </div>
+
+                {/* Right Section */}
+                <div className="space-y-6">
+                    {/* Title */}
+                    <div className="space-y-1 text-sm">
+                        <label htmlFor="title" className="block text-gray-700 font-medium">
+                            Title
+                        </label>
+                        <input
+                            className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-rose-500 focus:outline-none"
+                            name="title"
+                            id="title"
+                            type="text"
+                            placeholder="Enter vehicle title"
+                            required
+                        />
+                    </div>
+
+                    {/* Image Upload */}
+                    <div className="p-4 bg-gray-50 w-full rounded-lg border border-dashed border-gray-300 text-center">
+                        <label className="cursor-pointer">
+                            <input
+                                onChange={(e) => handleImageChange(e.target.files[0])}
+                                className="hidden"
+                                type="file"
+                                name="image"
+                                id="image"
+                                accept="image/*"
+                            />
+                            <div className="inline-block bg-rose-500 text-white px-6 py-2 rounded-lg font-medium hover:bg-rose-600 transition">
+                                {uploadButtonText}
+                            </div>
+                        </label>
+                    </div>
+
+                    {/* Price + Guests */}
+                    <div className="flex gap-4">
+                        <div className="flex-1 space-y-1 text-sm">
+                            <label htmlFor="price" className="block text-gray-700 font-medium">
+                                Price
                             </label>
                             <input
-                                className='w-full px-4 py-3 text-gray-800 border border-rose-300 focus:outline-rose-500 rounded-md '
-                                name='title'
-                                id='title'
-                                type='text'
-                                placeholder='Title'
+                                className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-rose-500 focus:outline-none"
+                                name="price"
+                                id="price"
+                                type="number"
+                                placeholder="Enter price"
                                 required
                             />
                         </div>
 
-                        <div className=' p-4 bg-white w-full  m-auto rounded-lg'>
-                            <div className='file_upload px-5 py-3 relative border-4 border-dotted border-gray-300 rounded-lg'>
-                                <div className='flex flex-col w-max mx-auto text-center'>
-                                    <label>
-                                        <input
-                                            onChange={e => handleImageChange(e.target.files[0])}
-                                            className='text-sm cursor-pointer w-36 hidden'
-                                            type='file'
-                                            name='image'
-                                            id='image'
-                                            accept='image/*'
-                                            hidden
-                                        />
-                                        <div className='bg-rose-500 text-white border border-gray-300 rounded font-semibold cursor-pointer p-1 px-3 hover:bg-rose-500'>
-                                            {uploadButtonText}
-                                        </div>
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                        <div className='flex justify-between gap-2'>
-                            <div className='space-y-1 text-sm'>
-                                <label htmlFor='price' className='block text-gray-600'>
-                                    Price
-                                </label>
-                                <input
-                                    className='w-full px-4 py-3 text-gray-800 border border-rose-300 focus:outline-rose-500 rounded-md '
-                                    name='price'
-                                    id='price'
-                                    type='number'
-                                    placeholder='Price'
-                                    required
-                                />
-                            </div>
-
-                            <div className='space-y-1 text-sm'>
-                                <label htmlFor='guest' className='block text-gray-600'>
-                                    Total guest
-                                </label>
-                                <input
-                                    className='w-full px-4 py-3 text-gray-800 border border-rose-300 focus:outline-rose-500 rounded-md '
-                                    name='total_guest'
-                                    id='guest'
-                                    type='number'
-                                    placeholder='Total guest'
-                                    required
-                                />
-                            </div>
-                        </div>
-
-                        <div className='flex justify-between gap-2'>
-                            <div className='space-y-1 text-sm'>
-                                <label htmlFor='seats' className='block text-gray-600'>
-                                    Seats
-                                </label>
-                                <input
-                                    className='w-full px-4 py-3 text-gray-800 border border-rose-300 focus:outline-rose-500 rounded-md '
-                                    name='seats'
-                                    id='seats'
-                                    type='number'
-                                    placeholder='seats'
-                                    required
-                                />
-                            </div>
-                            {/* 
-              <div className='space-y-1 text-sm'>
-                <label htmlFor='bathvehicles' className='block text-gray-600'>
-                  Bathvehicles
-                </label>
-                <input
-                  className='w-full px-4 py-3 text-gray-800 border border-rose-300 focus:outline-rose-500 rounded-md '
-                  name='bathvehicles'
-                  id='bathvehicles'
-                  type='number'
-                  placeholder='Bathvehicles'
-                  required
-                />
-              </div> */}
-                        </div>
-
-                        <div className='space-y-1 text-sm'>
-                            <label htmlFor='description' className='block text-gray-600'>
-                                Description
+                        <div className="flex-1 space-y-1 text-sm">
+                            <label htmlFor="guest" className="block text-gray-700 font-medium">
+                                Total Guests
                             </label>
-
-                            <textarea
-                                id='description'
-                                className='block rounded-md focus:rose-300 w-full h-32 px-4 py-3 text-gray-800  border border-rose-300 focus:outline-rose-500 '
-                                name='description'
-                            ></textarea>
+                            <input
+                                className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-rose-500 focus:outline-none"
+                                name="total_guest"
+                                id="guest"
+                                type="number"
+                                placeholder="No. of guests"
+                                required
+                            />
                         </div>
                     </div>
-                </div>
 
-                <button
-                    type='submit'
-                    className='w-full p-3 mt-5 text-center font-medium text-white transition duration-200 rounded shadow-md bg-rose-500'
-                >
-                    {loading ? (
-                        <TbFidgetSpinner className='m-auto animate-spin' size={24} />
-                    ) : (
-                        'Save & Continue'
-                    )}
-                </button>
-            </form>
-        </div>
+                    {/* Seats */}
+                    <div className="space-y-1 text-sm">
+                        <label htmlFor="seats" className="block text-gray-700 font-medium">
+                            Seats
+                        </label>
+                        <input
+                            className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-rose-500 focus:outline-none"
+                            name="seats"
+                            id="seats"
+                            type="number"
+                            placeholder="Enter number of seats"
+                            required
+                        />
+                    </div>
+
+                    {/* Description */}
+                    <div className="space-y-1 text-sm">
+                        <label htmlFor="description" className="block text-gray-700 font-medium">
+                            Description
+                        </label>
+                        <textarea
+                            id="description"
+                            className="w-full h-32 px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-rose-500 focus:outline-none resize-none"
+                            name="description"
+                            placeholder="Write something about this vehicle..."
+                        ></textarea>
+                    </div>
+                </div>
+            </div>
+
+            {/* Submit */}
+            <button
+                type="submit"
+                className="w-full p-3 mt-8 text-center font-medium text-white rounded-lg shadow-md bg-rose-500 hover:bg-rose-600 transition"
+            >
+                {loading ? (
+                    <TbFidgetSpinner className="m-auto animate-spin" size={24} />
+                ) : (
+                    'Save & Continue'
+                )}
+            </button>
+        </form>
     )
 }
 
-export default AddVehicleForm;
+export default AddVehicleForm

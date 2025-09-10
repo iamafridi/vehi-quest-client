@@ -8,8 +8,6 @@ const ManageUsers = () => {
     queryKey: ['users'],
     queryFn: async () => {
       const res = await getAllUsers()
-      // Make sure to return an array
-      // Adjust this based on your API response
       return Array.isArray(res) ? res : res?.data || []
     },
   })

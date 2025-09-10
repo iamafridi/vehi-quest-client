@@ -56,6 +56,20 @@ const MyListings = () => {
             throw error
         }
     }
+    // const {
+    //     refetch,
+    //     data: vehicles = [],
+    //     isLoading,
+    //     error,
+    //     isError,
+    // } = useQuery({
+    //     queryKey: ['vehicles', user?.email],
+    //     enabled: !loading && !!user?.email,
+    //     queryFn: () => getHostVehicles(user?.email),
+    //     retry: 2,
+    //     staleTime: 5 * 60 * 1000,
+    //     refetchOnWindowFocus: false,
+    // })
 
     const {
         refetch,
