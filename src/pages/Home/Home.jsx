@@ -3,6 +3,7 @@ import Categories from "../../components/Categories/Categories"
 import Vehicles from "../../components/Vehicles/Vehices"
 import Banner from "./Banner"
 import HomePart2 from "./HomePart2/HomePart2"
+import ListingsPage from "../../components/SearchField/ListingPage"
 
 const Home = () => {
   return (
@@ -17,6 +18,9 @@ const Home = () => {
 
       {/* Category Section */}
       <Categories />
+
+      {/* Search bar */}
+      {/* <ListingsPage /> */}
 
       {/* Vehicle Section */}
       <Vehicles />
