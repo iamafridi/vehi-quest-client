@@ -1,18 +1,11 @@
 import { useState } from 'react'
-// Components
-
 import ToggleBtn from '../../Button/ToggleBtn'
-// Icons
-import { GrLogout } from 'react-icons/gr'
+import { FiLogOut } from 'react-icons/fi'   // ✅ Better visible logout icon
 import { FcSettings } from 'react-icons/fc'
 import { AiOutlineBars } from 'react-icons/ai'
 import { BsGraphUp } from 'react-icons/bs'
-
 import useAuth from '../../../hooks/useAuth'
 import useRole from '../../../hooks/useRole'
-import { FaAddressBook } from "react-icons/fa";
-
-
 import Logo from '../../Shared/Logo'
 import MenuItem from './MenuItem'
 import HostMenu from '../Menu/HostMenu'
@@ -25,18 +18,20 @@ const Sidebar = () => {
   const [isActive, setActive] = useState(false)
   const [role] = useRole()
 
-  //   For guest/host menu item toggle button
+  // Guest/host toggle
   const toggleHandler = event => {
     setToggle(event.target.checked)
   }
+
   // Sidebar Responsive Handler
   const handleToggle = () => {
     setActive(!isActive)
   }
+
   return (
     <>
       {/* Small Screen Navbar */}
-      <div className='bg-gray-900 text-gray-100 flex justify-between md:hidden'>
+      <div className='bg-gray-900  text-gray-100 flex justify-between md:hidden'>
         <div>
           <div className='block cursor-pointer p-4 font-bold'>
             <Logo />
@@ -54,7 +49,7 @@ const Sidebar = () => {
       {/* Sidebar */}
       <div
         className={`z-10 md:fixed flex flex-col justify-between overflow-x-hidden bg-gray-900 w-64 space-y-6 px-2 py-4 absolute inset-y-0 left-0 transform ${isActive && '-translate-x-full'
-          }  md:translate-x-0  transition duration-200 ease-in-out`}
+          }  md:translate-x-0 transition duration-200 ease-in-out`}
       >
         <div>
           <div>
@@ -73,17 +68,10 @@ const Sidebar = () => {
                 label='Statistics'
                 address='/dashboard'
               />
-              {/* <MenuItem
-                icon={FaAddressBook}
-                label='My bookings'
-                address='/dashboard/my-bookings'
-              /> */}
 
-
-
-              {/* Host Menu Items */}
+              {/* Host / Guest / Admin Menus */}
               {role === 'guest' && <GuestMenu />}
-              {role === 'host' ? toggle ? <HostMenu /> : <GuestMenu /> : ''}
+              {role === 'host' ? (toggle ? <HostMenu /> : <GuestMenu />) : ''}
               {role === 'admin' && <AdminMenu />}
             </nav>
           </div>
@@ -103,12 +91,13 @@ const Sidebar = () => {
             label='Profile'
             address='/dashboard/profile'
           />
+
+          {/* ✅ Fixed Logout */}
           <button
             onClick={logOut}
-            className='flex w-full items-center px-4 py-2 mt-5 text-gray-100 hover:bg-gray-300   hover:text-gray-700 transition-colors duration-300 transform'
+            className='flex w-full items-center px-4 py-2 mt-5 text-gray-100 hover:bg-gray-800 hover:text-red-400 transition-colors duration-300 transform rounded-lg'
           >
-            <GrLogout className='w-5 h-5' />
-
+            <FiLogOut className='w-5 h-5 text-red-400' />
             <span className='mx-4 font-medium'>Logout</span>
           </button>
         </div>

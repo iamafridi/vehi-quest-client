@@ -148,18 +148,18 @@ const MyListings = () => {
             </Helmet>
 
             {Array.isArray(vehicles) && vehicles.length > 0 ? (
-                <div className="container mx-auto px-4 sm:px-8">
-                    <div className="py-8">
+                <div className="container mx-auto  sm:px-8">
+                    <div className="py-4">
                         {/* Header */}
-                        <div className="mb-6">
+                        <div className="mb-4 font-[font2]">
                             <h1 className="text-2xl font-semibold text-gray-900">My Vehicle Listings</h1>
-                            <p className="mt-1 text-sm text-gray-600">
+                            <p className="mt-1 text-sm font-[font1] tracking-wide text-gray-600">
                                 Manage your vehicle listings and track their performance
                             </p>
                         </div>
 
                         {/* Refresh button (kept as you wanted) */}
-                        <div className="mb-4">
+                        <div className="mb-1">
                             <button
                                 onClick={() => {
                                     setClicked(true);            // show feedback
@@ -167,18 +167,18 @@ const MyListings = () => {
                                     setTimeout(() => setClicked(false), 1500); // reset text after 1.5s
                                 }}
                                 disabled={isLoading}
-                                className="bg-blue-900/80 hover:bg-red-900/70 disabled:bg-blue-300 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200"
+                                className="bg-blue-900/90 font-[font1] tracking-wider hover:bg-red-900/70 disabled:bg-blue-300 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200"
                             >
                                 {isLoading ? 'Refreshing...' : clicked ? 'Refreshed' : 'Refresh'}
                             </button>
                         </div>
 
                         {/* Table */}
-                        <div className="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
-                            <div className="inline-block min-w-full shadow rounded-lg overflow-hidden">
+                        <div className="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto ">
+                            <div className="inline-block min-w-full shadow rounded-lg animated-border-3 border overflow-hidden ">
                                 <table className="min-w-full leading-normal">
                                     <thead>
-                                        <tr>
+                                        <tr className='font-[font1]'>
                                             <th className="px-5 py-3 bg-white border-b border-gray-200 text-gray-800 text-left text-sm uppercase font-normal">Title</th>
                                             <th className="px-5 py-3 bg-white border-b border-gray-200 text-gray-800 text-left text-sm uppercase font-normal">Location</th>
                                             <th className="px-5 py-3 bg-white border-b border-gray-200 text-gray-800 text-left text-sm uppercase font-normal">Price</th>
@@ -188,7 +188,7 @@ const MyListings = () => {
                                             <th className="px-5 py-3 bg-white border-b border-gray-200 text-gray-800 text-left text-sm uppercase font-normal">Update</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody className='font-[font2] uppercase'>
                                         {vehicles.map((vehicle, index) => (
                                             <VehicleDataRow
                                                 key={vehicle._id || `vehicle-${index}`}
@@ -204,7 +204,7 @@ const MyListings = () => {
                         </div>
 
                         {/* Summary */}
-                        <div className="mt-4 text-sm text-gray-600">
+                        <div className="mt-4 text-sm text-gray-600 border-l-4 p-3 animated-border-3 rounded-xl">
                             Showing {vehicles.length} vehicle{vehicles.length !== 1 ? 's' : ''}
                         </div>
                     </div>
