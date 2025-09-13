@@ -59,7 +59,7 @@
   justify-content: center;
   gap: 1rem;
   margin-top: 20px;
-  flex-wrap: wrap; /* ensures buttons don't overflow */
+  flex-wrap: wrap;
 }
 
 /* Buttons */

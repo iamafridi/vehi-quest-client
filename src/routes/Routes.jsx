@@ -17,6 +17,7 @@ import MyBookings from '../pages/Dashboard/Guest/MyBookings'
 import ManageBookings from '../pages/Dashboard/Host/ManageBookings'
 import Statistics from '../pages/Dashboard/Common/Statistics'
 import AddVehicle from '../pages/Dashboard/Host/AddVehicle'
+import AdminManageBookings from '../pages/Dashboard/Admin/AdminManageBookings'
 
 export const router = createBrowserRouter([
   {
@@ -92,6 +93,15 @@ export const router = createBrowserRouter([
             <ManageUser />
           </AdminRoute>
         )
+      },
+      {
+        path: 'admin-manage-booking',
+        element: (
+          <AdminRoute>
+            <AdminManageBookings />
+          </AdminRoute>
+        )
+
       },
       // Common routes (accessible to all authenticated users)
       {

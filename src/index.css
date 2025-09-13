@@ -80,7 +80,7 @@ p {
 }
 .animated-border-3 {
   cursor: pointer;
-  animation: borderColorChange3 3s ease infinite alternate;
+  animation: borderColorChange3 3s ease infinite linear;
   transition: transform 0.3s ease, 0.3s ease;
 }
 /* Color Changing Animation */

@@ -22,7 +22,7 @@ const SearchBar = ({ onSearch, defaultCategory = "" }) => {
   };
 
   return (
-    <div className="w-full flex flex-col md:flex-row gap-4 p-5 md:p-6 bg-black/20 backdrop-blur-md rounded-xl shadow-lg shadow-cyan-500 mt-10 items-center justify-center">
+    <div className="w-full flex flex-col md:flex-row gap-4 p-5 md:p-6 bg-white bg-gradient-to-br from-black/5 animated-border-2 border-b-2 border-l border-r font-[font1] shadow-slate-400 shadow-lg rounded-3xl mt-10 items-center justify-center">
 
       {/* Location Input */}
       <input
@@ -69,7 +69,7 @@ const SearchBar = ({ onSearch, defaultCategory = "" }) => {
       <button
         onClick={handleSearch}
         disabled={loading}
-        className="flex items-center gap-2 px-6 py-3 bg-blue-900 hover:bg-blue-700 text-white font-semibold rounded-lg shadow-md hover:shadow-lg transition disabled:opacity-50 disabled:cursor-not-allowed"
+        className="flex items-center gap-2 px-6 py-3 bg-blue-900 hover:bg-blue-700 text-white font-semibold rounded-full shadow-md hover:shadow-lg transition disabled:opacity-50 disabled:cursor-not-allowed animated-border-3 border-[3px]"
       >
         {loading ? "Searching..." : "Search"}
       </button>

@@ -45,6 +45,20 @@ export const getBookings = async (email) => {
     throw error;
   }
 };
+export const getAdminBookings = async () => {
+  const { data } = await axiosSecure.get(`/bookings/admin`);
+  return data;
+};
+
+export const updateBooking = async (id, updatedData) => {
+  const { data } = await axiosSecure.put(`/bookings/${id}`, updatedData);
+  return data;
+};
+
+export const cancelBooking = async (id) => {
+  const { data } = await axiosSecure.delete(`/bookings/${id}`);
+  return data;
+};
 
 // For host
 export const getHostBookings = async (email) => {
