@@ -51,11 +51,11 @@ const BannerCarousel = () => {
                     <div className='text-[12vw] sm:text-[11vw] md:text-[10vw] lg:text-[9.5vw] justify-center flex items-center uppercase leading-[10vw] sm:leading-[9vw] md:leading-[8.5vw] lg:leading-[8vw]'>
                         VehiQuest
                     </div>
-                    <div className='text-[12vw] sm:text-[11vw] md:text-[10vw] lg:text-[9.5vw] justify-center flex items-center uppercase leading-[10vw] sm:leading-[9vw] md:leading-[8.5vw] lg:leading-[8vw] mb-1'>
+                    <div className='text-[12vw]  sm:text-[11vw] md:text-[10vw] lg:text-[9.5vw] justify-center flex items-center uppercase leading-[10vw] sm:leading-[9vw] md:leading-[8.5vw] lg:leading-[8vw] mb-1'>
                         buy
-                        <div className='h-[12vw] border-2 rounded-full animated-border-3 hover:scale-[1.5]  w-[12vw] sm:h-[11vw] sm:w-[11vw] md:h-[10vw] md:w-[10vw] lg:h-[9.5vw] lg:w-[9.5vw] overflow-hidden mx-2 sm:mx-3 md:mx-4 flex items-center justify-center'>
+                        <div className='h-[12vw] border-2 animated-border-3 rounded-full  hover:scale-[1.5]  w-[12vw] sm:h-[11vw] sm:w-[11vw] md:h-[10vw] md:w-[10vw] lg:h-[9.5vw] lg:w-[9.5vw] overflow-hidden mx-2 sm:mx-3 md:mx-4 flex items-center justify-center'>
                             <video
-                                className='h-full w-full object-cover'
+                                className='h-full w-full object-cover '
                                 autoPlay
                                 loop
                                 muted
@@ -79,7 +79,7 @@ const BannerCarousel = () => {
                         </button>
                     </Link> */}
                     <Link to='/login'>
-                        <button className="animated-button bg-transparent border-2  text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg">
+                        <button className="animated-button mb-10 bg-transparent border-2  text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg">
                             Learn More
                         </button>
                     </Link>
