@@ -47,6 +47,12 @@ const ManageBookings = () => {
                                                 scope='col'
                                                 className='px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal'
                                             >
+                                                Host Info
+                                            </th>
+                                            <th
+                                                scope='col'
+                                                className='px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal'
+                                            >
                                                 Guest Info
                                             </th>
                                             <th
@@ -72,6 +78,12 @@ const ManageBookings = () => {
                                                 className='px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal'
                                             >
                                                 Action
+                                            </th>
+                                            <th
+                                                scope='col'
+                                                className='px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal'
+                                            >
+
                                             </th>
                                         </tr>
                                     </thead>

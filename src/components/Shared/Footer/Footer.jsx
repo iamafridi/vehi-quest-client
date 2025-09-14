@@ -3,7 +3,7 @@ import "./Footer.css"
 
 const Footer = () => {
   return (
-    <div className="bg-gradient-to-t from-black/40 rounded-ss-xl mt-20 ">
+    <div className="bg-gradient-to-t from-black/80 rounded-ss-xl mt-20 ">
 
       <footer className=" text-gray-50 rounded-ss-xl rounded-se-xl">
         <div className="mx-auto -mt-20 max-w-screen-xl px-4 pb-8 pt-16 sm:px-6 lg:px-8">

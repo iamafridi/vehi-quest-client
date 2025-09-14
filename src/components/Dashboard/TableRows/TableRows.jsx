@@ -87,7 +87,7 @@ const TableRow = ({ booking, refetch, isAdmin = false }) => {
           </div>
         </td>
 
-        {/* Guest */}
+        {/* Guest - Fixed alignment */}
         <td className="px-4 py-4 border-b border-gray-200 bg-white text-sm">
           <div className="flex items-center gap-3">
             <img
@@ -166,7 +166,7 @@ const TableRow = ({ booking, refetch, isAdmin = false }) => {
         </td>
       </tr>
 
-      {/* Large Desktop (1280px - 1535px) - Improved condensed layout */}
+      {/* Large Desktop (1280px - 1535px) - Fixed guest alignment */}
       <tr className="hidden xl:table-row 2xl:hidden">
         {/* Vehicle */}
         <td className="px-3 py-4 border-b border-gray-200 bg-white text-sm">
@@ -192,7 +192,7 @@ const TableRow = ({ booking, refetch, isAdmin = false }) => {
           </div>
         </td>
 
-        {/* Guest */}
+        {/* Guest - Fixed alignment */}
         <td className="px-3 py-4 border-b border-gray-200 bg-white text-sm">
           <div className="flex items-center gap-2">
             <img
@@ -258,7 +258,7 @@ const TableRow = ({ booking, refetch, isAdmin = false }) => {
         </td>
       </tr>
 
-      {/* Medium Desktop (1024px - 1279px) - Compact table layout */}
+      {/* Medium Desktop (1024px - 1279px) - Fixed guest alignment */}
       <tr className="hidden lg:table-row xl:hidden">
         {/* Vehicle + Price */}
         <td className="px-3 py-3 border-b border-gray-200 bg-white text-sm">
@@ -285,7 +285,7 @@ const TableRow = ({ booking, refetch, isAdmin = false }) => {
           </div>
         </td>
 
-        {/* Guest */}
+        {/* Guest - Fixed alignment */}
         <td className="px-3 py-3 border-b border-gray-200 bg-white text-sm">
           <div className="flex items-center gap-2">
             <img
@@ -342,7 +342,7 @@ const TableRow = ({ booking, refetch, isAdmin = false }) => {
         </td>
       </tr>
 
-      {/* Tablet (768px - 1023px) - Improved card-like row */}
+      {/* Tablet (768px - 1023px) - Fixed guest section alignment */}
       <tr className="hidden md:table-row lg:hidden">
         <td colSpan="8" className="px-4 py-4 border-b border-gray-200 bg-white">
           <div className="flex items-center gap-4">
@@ -370,17 +370,21 @@ const TableRow = ({ booking, refetch, isAdmin = false }) => {
               </div>
             </div>
 
-            {/* Guest Info */}
-            <div className="flex items-center gap-2 min-w-0 flex-shrink-0 w-36">
-              <img
-                alt="guest"
-                src={guestImage}
-                className="h-8 w-8 rounded-full object-cover flex-shrink-0"
-              />
-              <div className="min-w-0 flex-1">
-                <p className="text-xs text-gray-500 uppercase tracking-wide">Guest</p>
-                <p className="text-sm font-medium text-gray-900 truncate">{guestName}</p>
-                <p className="text-xs text-gray-500 truncate">{guestEmail}</p>
+            {/* Guest Info - Fixed alignment */}
+            <div className="min-w-0 flex-shrink-0 w-36">
+              <div className="text-center">
+                <p className="text-xs text-gray-500 uppercase tracking-wide mb-1">Guest</p>
+                <div className="flex items-center justify-center gap-2">
+                  <img
+                    alt="guest"
+                    src={guestImage}
+                    className="h-8 w-8 rounded-full object-cover flex-shrink-0"
+                  />
+                  <div className="min-w-0 flex-1">
+                    <p className="text-sm font-medium text-gray-900 truncate">{guestName}</p>
+                    <p className="text-xs text-gray-500 truncate">{guestEmail}</p>
+                  </div>
+                </div>
               </div>
             </div>
 
@@ -424,7 +428,7 @@ const TableRow = ({ booking, refetch, isAdmin = false }) => {
         </td>
       </tr>
 
-      {/* Mobile (up to 767px) - Full card layout */}
+      {/* Mobile (up to 767px) - Guest section alignment fixed */}
       <tr className="md:hidden border-b border-gray-200">
         <td colSpan="8" className="px-4 py-4">
           <div className="bg-white rounded-lg shadow-sm border border-gray-100 p-4 space-y-4">
@@ -459,15 +463,14 @@ const TableRow = ({ booking, refetch, isAdmin = false }) => {
 
             {/* Host Information */}
             <div className="bg-gray-50 rounded-lg p-3">
-              <div className="min-w-0">
-                <p className="text-xs uppercase tracking-wide text-gray-500 font-medium">Host</p>
-                <p className="font-semibold text-gray-900">{hostName}</p>
-                <p className="text-sm text-gray-600 break-all">{hostEmail}</p>
-              </div>
+              <p className="text-xs uppercase tracking-wide text-gray-500 font-medium mb-2">Host</p>
+              <p className="font-semibold text-gray-900">{hostName}</p>
+              <p className="text-sm text-gray-600 break-all">{hostEmail}</p>
             </div>
 
-            {/* Guest Information */}
+            {/* Guest Information - Fixed alignment */}
             <div className="bg-blue-50 rounded-lg p-3">
+              <p className="text-xs uppercase tracking-wide text-gray-500 font-medium mb-2">Guest</p>
               <div className="flex items-center gap-3">
                 <img
                   alt="guest"
@@ -475,7 +478,6 @@ const TableRow = ({ booking, refetch, isAdmin = false }) => {
                   className="h-12 w-12 rounded-full object-cover flex-shrink-0"
                 />
                 <div className="min-w-0 flex-1">
-                  <p className="text-xs uppercase tracking-wide text-gray-500 font-medium">Guest</p>
                   <p className="font-semibold text-gray-900">{guestName}</p>
                   <p className="text-sm text-gray-600 break-all">{guestEmail}</p>
                 </div>

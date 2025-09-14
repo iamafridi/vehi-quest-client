@@ -59,7 +59,7 @@ const CheckoutForm = ({ bookingInfo, closeModal }) => {
 
         setProcessing(true)
 
-        // Here Money will be educted
+        // Here Money will be deducted
         const { paymentIntent, error: confirmError } =
             await stripe.confirmCardPayment(clientSecret, {
                 payment_method: {
@@ -74,16 +74,43 @@ const CheckoutForm = ({ bookingInfo, closeModal }) => {
         if (confirmError) {
             console.log(confirmError)
             setCardError(confirmError.message)
+            setProcessing(false)
+            return
         }
 
         console.log('payment intent', paymentIntent)
 
         if (paymentIntent.status === 'succeeded') {
+            // ✅ Fix: Structure the data according to backend expectations
             const paymentInfo = {
                 ...bookingInfo,
+                // ✅ Backend expects 'guest' object with email
+                guest: {
+                    email: user?.email,
+                    name: user?.displayName,
+                    // Add other guest info if available in bookingInfo
+                    ...bookingInfo.guest
+                },
+                // ✅ Backend expects 'host' field
+                host: bookingInfo.host || bookingInfo.hostId || bookingInfo.hostEmail,
+                // ✅ Backend expects 'transactionId'
                 transactionId: paymentIntent.id,
-                date: new Date(),
+                // ✅ Backend expects 'dates' (array)
+                dates: bookingInfo.dates || [bookingInfo.date] || [],
+                // ✅ Keep vehicleId for updating vehicle
+                vehicleId: bookingInfo.vehicleId,
+                // Add timestamp
+                createdAt: new Date(),
             }
+
+            // Debug: Log the data structure before sending
+            console.log("Sending booking data:", paymentInfo);
+            console.log("Required fields check:");
+            console.log("guest.email:", paymentInfo.guest?.email);
+            console.log("host:", paymentInfo.host);
+            console.log("transactionId:", paymentInfo.transactionId);
+            console.log("dates:", paymentInfo.dates);
+
             try {
                 // save payment information to the server
                 await saveBookingInfo(paymentInfo)
@@ -94,12 +121,12 @@ const CheckoutForm = ({ bookingInfo, closeModal }) => {
                 toast.success(text)
                 navigate('/dashboard/my-bookings')
             } catch (err) {
-                console.log(err)
-                toast.error(err.message)
+                console.log("Full error details:", err)
+                toast.error(err.response?.data?.message || err.message)
             } finally {
                 setProcessing(false)
             }
-
+        } else {
             setProcessing(false)
         }
     }
