@@ -60,7 +60,7 @@ const BannerCarousel = () => {
                                 loop
                                 muted
                                 playsInline
-                                playbackRate={0.8}
+                                playbackrate={0.8}
                                 src={video}
                             />
                         </div>

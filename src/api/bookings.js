@@ -71,6 +71,53 @@ export const getHostBookings = async (email) => {
   }
 };
 
+// Get deleted/cancelled bookings (admin)
+export const getDeletedBookings = async () => {
+  try {
+    const { data } = await axiosSecure.get("/bookings/admin/deleted");
+    return data;
+  } catch (error) {
+    console.error("Error getting deleted bookings:", error);
+    throw error;
+  }
+};
+
+// Soft delete booking (admin)
+export const softDeleteBooking = async (id) => {
+  try {
+    const { data } = await axiosSecure.patch(
+      `/bookings/admin/soft-delete/${id}`
+    );
+    return data;
+  } catch (error) {
+    console.error("Error soft deleting booking:", error);
+    throw error;
+  }
+};
+
+// Restore booking (admin)
+export const restoreBooking = async (id) => {
+  try {
+    const { data } = await axiosSecure.patch(`/bookings/admin/restore/${id}`);
+    return data;
+  } catch (error) {
+    console.error("Error restoring booking:", error);
+    throw error;
+  }
+};
+
+// Permanently delete booking (admin)
+export const permanentDeleteBooking = async (id) => {
+  try {
+    const { data } = await axiosSecure.delete(
+      `/bookings/admin/permanent/${id}`
+    );
+    return data;
+  } catch (error) {
+    console.error("Error permanently deleting booking:", error);
+    throw error;
+  }
+};
 // Delete a booking
 export const deleteBooking = async (id) => {
   try {

@@ -27,26 +27,49 @@ const Card = memo(({ vehicle, priority = false }) => {
     };
 
     // Function to check if vehicle should be marked as sold out
+    // const checkSoldOutStatus = (vehicle) => {
+    //     // Check explicit soldOut flag
+    //     if (vehicle?.soldOut) return true;
+
+    //     // Check if all upcoming dates are booked (optional logic)
+    //     // You can customize this based on your business logic
+    //     const bookedDates = vehicle?.bookedDates || [];
+    //     const today = new Date();
+    //     today.setHours(0, 0, 0, 0);
+
+    //     // If more than 30 days are booked in advance, consider it sold out
+    //     const futureBookedDates = bookedDates.filter(dateStr => {
+    //         const bookDate = new Date(dateStr);
+    //         return bookDate >= today;
+    //     });
+
+    //     // Customize this threshold based on your needs
+    //     return futureBookedDates.length > 30;
+    // };
     const checkSoldOutStatus = (vehicle) => {
-        // Check explicit soldOut flag
+        // Primary check: use the explicit status from the backend
+        if (vehicle?.status === 'sold_out') return true;
+        // Secondary check: use the explicit soldOut flag from the backend
         if (vehicle?.soldOut) return true;
 
-        // Check if all upcoming dates are booked (optional logic)
-        // You can customize this based on your business logic
-        const bookedDates = vehicle?.bookedDates || [];
-        const today = new Date();
-        today.setHours(0, 0, 0, 0);
+        // Tertiary check: Calculate based on booked dates if no explicit flag is set
+        if (!vehicle?.bookedDates || !Array.isArray(vehicle.bookedDates)) {
+            return false; // No data to calculate from
+        }
 
-        // If more than 30 days are booked in advance, consider it sold out
-        const futureBookedDates = bookedDates.filter(dateStr => {
+        const today = new Date();
+        today.setHours(0, 0, 0, 0); // Normalize to start of day
+
+        // Filter for future booked dates only
+        const futureBookedDates = vehicle.bookedDates.filter(dateStr => {
             const bookDate = new Date(dateStr);
             return bookDate >= today;
         });
 
-        // Customize this threshold based on your needs
+        // If more than 30 future dates are booked, consider it sold out
+        // This acts as a "soft" sold-out based on high demand
         return futureBookedDates.length > 30;
     };
-
     if (!vehicle) {
         return (
             <div className="aspect-square w-full bg-gray-100 rounded-xl animate-pulse">

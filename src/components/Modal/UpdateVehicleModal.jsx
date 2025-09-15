@@ -2,10 +2,13 @@ import { Dialog, Transition } from '@headlessui/react'
 import { Fragment, useState } from 'react'
 import { imageUpload } from '../../api/utils'
 import toast from 'react-hot-toast'
-import { updateVehicle as updateVehicleApi } from '../../api/vehicles' // ✅ renamed import
+import {
+  updateVehicle, // Regular update for hosts
+  updateVehicleByAdmin // Admin update
+} from '../../api/vehicles'
 import UpdateVehicleForm from '../Form/UpdateVehicleForm'
 
-const UpdateVehicleModal = ({ isOpen, setIsEditModalOpen, refetch, vehicle, id }) => {
+const UpdateVehicleModal = ({ isOpen, setIsEditModalOpen, refetch, vehicle, id, isAdmin = false }) => {
   const [loading, setLoading] = useState(false)
   const [dates, setDates] = useState({
     startDate: new Date(vehicle.from),
@@ -32,9 +35,17 @@ const UpdateVehicleModal = ({ isOpen, setIsEditModalOpen, refetch, vehicle, id }
     if (!id) return
 
     try {
-      const { _id, ...safeData } = vehicleData // 🔹 remove _id
-      await updateVehicleApi(id, safeData)     // send safe data only
-      toast.success('Vehicle updated successfully!')
+      const { _id, ...safeData } = vehicleData // 
+
+      // isAdmin prop
+      if (isAdmin) {
+        await updateVehicleByAdmin(id, safeData)
+        toast.success('Vehicle updated successfully by admin!')
+      } else {
+        await updateVehicle(id, safeData)
+        toast.success('Vehicle updated successfully!')
+      }
+
       refetch()
       setIsEditModalOpen(false)
     } catch (error) {
@@ -42,7 +53,6 @@ const UpdateVehicleModal = ({ isOpen, setIsEditModalOpen, refetch, vehicle, id }
       toast.error(error?.message || 'Failed to update vehicle')
     }
   }
-
 
   const handleDates = ranges => {
     setDates(ranges.selection)
@@ -121,8 +131,6 @@ const UpdateVehicleModal = ({ isOpen, setIsEditModalOpen, refetch, vehicle, id }
 }
 
 export default UpdateVehicleModal
-
-
 
 // import { Dialog, Transition } from '@headlessui/react'
 // import { Fragment, useState } from 'react'

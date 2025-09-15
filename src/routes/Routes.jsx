@@ -6,7 +6,7 @@ import Login from '../pages/Login/Login'
 import SignUp from '../pages/SignUp/SignUp'
 import VehicleDetails from '../pages/VehicleDetails/VehicleDetails'
 import PrivateRoute from './PrivateRoute'
-import { getVehicle } from '../api/vehicles'
+import { getVehicleById } from '../api/vehicles'
 import DashboardLayout from '../layouts/DashboardLayout'
 import MyListings from '../pages/Dashboard/Host/MyListings'
 import HostRoute from './HostRoute'
@@ -18,6 +18,8 @@ import ManageBookings from '../pages/Dashboard/Host/ManageBookings'
 import Statistics from '../pages/Dashboard/Common/Statistics'
 import AddVehicle from '../pages/Dashboard/Host/AddVehicle'
 import AdminManageBookings from '../pages/Dashboard/Admin/AdminManageBookings'
+import AdminManageVehicles from '../pages/Dashboard/Admin/AdminManageVehicles'
+import AdminApproveVehicles from '../pages/Dashboard/Admin/AdminApproveVehicles'
 
 export const router = createBrowserRouter([
   {
@@ -36,7 +38,7 @@ export const router = createBrowserRouter([
             <VehicleDetails />
           </PrivateRoute>
         ),
-        loader: ({ params }) => getVehicle(params.id)
+        loader: ({ params }) => getVehicleById(params.id)
       }
     ],
   },
@@ -101,7 +103,22 @@ export const router = createBrowserRouter([
             <AdminManageBookings />
           </AdminRoute>
         )
-
+      },
+      {
+        path: 'admin-manage-vehicle',
+        element: (
+          <AdminRoute>
+            <AdminManageVehicles />
+          </AdminRoute>
+        )
+      },
+      {
+        path: 'admin-approve-vehicle',
+        element: (
+          <AdminRoute>
+            <AdminApproveVehicles />
+          </AdminRoute>
+        )
       },
       // Common routes (accessible to all authenticated users)
       {

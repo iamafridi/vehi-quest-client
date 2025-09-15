@@ -11,7 +11,7 @@ const VehicleDataRow = ({ vehicle, deleteVehicle, updateVehicle }) => {
   return (
     <tr>
       {/* Vehicle Info */}
-      <td className="px-5 py-5  bg-white text-sm">
+      <td className="px-5 py-5 bg-white text-sm">
         <div className="flex items-center">
           <div className="flex-shrink-0">
             <img
@@ -75,6 +75,84 @@ const VehicleDataRow = ({ vehicle, deleteVehicle, updateVehicle }) => {
 };
 
 export default VehicleDataRow;
+
+// import React from 'react';
+
+// const VehicleDataRow = ({ vehicle, deleteVehicle, updateVehicle }) => {
+//   // Format date safely
+//   const formatDate = (dateString) => {
+//     if (!dateString) return 'N/A';
+//     const date = new Date(dateString);
+//     return isNaN(date.getTime()) ? 'N/A' : date.toLocaleDateString();
+//   };
+
+//   return (
+//     <tr>
+//       {/* Vehicle Info */}
+//       <td className="px-5 py-5  bg-white text-sm">
+//         <div className="flex items-center">
+//           <div className="flex-shrink-0">
+//             <img
+//               alt="vehicle"
+//               src={vehicle?.image || '/placeholder-car.jpg'}
+//               className="mx-auto object-cover rounded h-10 w-15"
+//             />
+//           </div>
+//           <div className="ml-3">
+//             <p className="text-gray-900 font-semibold">
+//               {vehicle?.title || 'No Title'}
+//             </p>
+//             <p className="text-gray-600 text-sm">
+//               {vehicle?.category || 'No Category'}
+//             </p>
+//           </div>
+//         </div>
+//       </td>
+
+//       {/* Location */}
+//       <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+//         {vehicle?.location || 'No Location'}
+//       </td>
+
+//       {/* Price */}
+//       <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm font-semibold">
+//         ${vehicle?.price || 0}/day
+//       </td>
+
+//       {/* From */}
+//       <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+//         {formatDate(vehicle?.from)}
+//       </td>
+
+//       {/* To */}
+//       <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+//         {formatDate(vehicle?.to)}
+//       </td>
+
+//       {/* Delete Button */}
+//       <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+//         <button
+//           onClick={deleteVehicle}
+//           className="px-3 py-1 font-semibold text-red-900 bg-red-200 rounded-full hover:bg-red-300 transition-colors"
+//         >
+//           Delete
+//         </button>
+//       </td>
+
+//       {/* Update Button */}
+//       <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+//         <button
+//           onClick={updateVehicle}
+//           className="px-3 py-1 font-semibold text-green-900 bg-green-200 rounded-full hover:bg-green-300 transition-colors"
+//         >
+//           Update
+//         </button>
+//       </td>
+//     </tr>
+//   );
+// };
+
+// export default VehicleDataRow;
 
 
 // import React, { useState } from 'react';

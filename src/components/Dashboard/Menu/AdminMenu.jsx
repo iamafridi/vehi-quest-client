@@ -15,6 +15,16 @@ const AdminMenu = () => {
                 label='Admin Manage Bookings'
                 address='admin-manage-booking'
             />
+            <MenuItem
+                icon={FaAddressBook}
+                label='Admin Manage Vehicle'
+                address='admin-manage-vehicle'
+            />
+            <MenuItem
+                icon={FaAddressBook}
+                label='Admin Approve Vehicle'
+                address='admin-approve-vehicle'
+            />
         </>
     )
 }
