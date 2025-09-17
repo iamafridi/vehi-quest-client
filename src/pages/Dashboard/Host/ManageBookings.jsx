@@ -6,9 +6,11 @@ import Loader from '../../../components/Shared/Loader'
 
 import EmptyState from '../../../components/Shared/EmptyState'
 import TableRow from '../../../components/Dashboard/TableRows/TableRows'
+import { useState } from 'react'
 
 const ManageBookings = () => {
     const { user, loading } = useAuth()
+    const [clicked, setClicked] = useState(false)
     const {
         data: bookings = [],
         isLoading,
@@ -32,6 +34,34 @@ const ManageBookings = () => {
             {bookings && Array.isArray(bookings) && bookings.length > 0 ? (
                 <div className='container mx-auto px-4 sm:px-8'>
                     <div className='py-8'>
+                        <div className='flex items-center justify-between'>
+
+                            <div>
+                                <h1 className='text-2xl mb-1 font-semibold text-gray-900'>Manage Bookings </h1>
+                                <p className='mb-3 tracking-wider text-gray-700/90 text-sm'>Manage your bookings here , confirm or cancel booking in on place </p>
+                                {/* Refresh Button */}
+                                <button
+                                    onClick={() => {
+                                        setClicked(true)
+                                        refetch()
+                                        setTimeout(() => setClicked(false), 1500)
+                                    }}
+                                    disabled={isLoading}
+                                    className="bg-blue-900/90  font-[font1] tracking-wider hover:bg-red-900/70 
+               disabled:bg-blue-300 text-white px-4 py-2 rounded-md text-sm 
+               font-medium transition-colors duration-200"
+                                >
+                                    {isLoading ? 'Refreshing...' : clicked ? 'Refreshed' : 'Refresh'}
+                                </button>
+                            </div>
+
+                            <p className='font-[font1] tracking-wider border px-3 py-2 rounded-se-full rounded-ee-full border-l-[12px] animated-border-3'> Total Bookings :  {bookings.length}</p>
+
+
+
+
+                        </div>
+
                         <div className='-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto'>
                             <div className='inline-block min-w-full shadow rounded-lg overflow-hidden'>
                                 <table className='min-w-full leading-normal'>

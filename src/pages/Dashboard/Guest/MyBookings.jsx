@@ -5,9 +5,11 @@ import { getBookings } from '../../../api/bookings'
 import Loader from '../../../components/Shared/Loader'
 import EmptyState from '../../../components/Shared/EmptyState'
 import TableRow from '../../../components/Dashboard/TableRows/TableRows'
+import { useState } from 'react'
 
 const MyBookings = () => {
     const { user, loading } = useAuth()
+    const [clicked, setClicked] = useState(false)
 
     const {
         data: bookings = [],
@@ -32,6 +34,26 @@ const MyBookings = () => {
             {bookings && Array.isArray(bookings) && bookings.length > 0 ? (
                 <div className='container mx-auto px-4 sm:px-8'>
                     <div className='py-8'>
+                        <div className='flex  mb-3 justify-between items-center'>
+                            <div>
+                                <h1 className='text-2xl mb-1 font-semibold tracking-wide font-[font1]'> Manage your bookings</h1>
+                                <p className='text-sm text-gray-700/90 tracking-wide'>Manage your bookings from one place, check their status and cancel anytime</p>
+                            </div>
+                            <p className=' border animated-border-3 px-3 py-2 rounded-se-full rounded-ee-full border-l-[12px]'>Total bookings: {bookings.length}</p>
+
+                        </div>
+                        <button onClick={() => {
+                            setClicked(true)
+                            refetch()
+                            setTimeout(() => setClicked(false), 1000)
+                        }}
+                            disabled={isLoading}
+                            className="bg-blue-900/90  font-[font1] tracking-wider hover:bg-red-900/70 
+               disabled:bg-blue-300 text-white px-4 py-2 rounded-md text-sm 
+               font-medium transition-colors duration-200"
+                        >
+                            {isLoading ? 'Refreshing....' : clicked ? 'Refreshed' : 'Refresh'}
+                        </button>
                         <div className='-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto'>
                             <div className='inline-block min-w-full shadow rounded-lg overflow-hidden'>
                                 <table className='min-w-full leading-normal'>

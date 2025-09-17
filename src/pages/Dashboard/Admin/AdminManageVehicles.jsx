@@ -13,6 +13,7 @@ import VehicleTableRow from '../../../components/Dashboard/TableRows/VehicleTabl
 
 const AdminManageVehicles = () => {
     const [statusFilter, setStatusFilter] = useState('active')
+    const [refreshState, setRefreshState] = useState('idle') // idle, refreshing, refreshed
     const queryClient = useQueryClient()
 
     const {
@@ -61,6 +62,46 @@ const AdminManageVehicles = () => {
         }
     }
 
+    // Refresh Button Logic
+    const handleRefresh = async () => {
+        setRefreshState('refreshing')
+        try {
+            await refetch()
+            setRefreshState('refreshed')
+            // Reset to idle after 2 seconds
+            setTimeout(() => {
+                setRefreshState('idle')
+            }, 2000)
+        } catch (error) {
+            setRefreshState('idle')
+        }
+    }
+
+    const getRefreshButtonContent = () => {
+        switch (refreshState) {
+            case 'refreshing':
+                return {
+                    text: 'Refreshing...',
+                    icon: 'animate-spin',
+                    disabled: true
+                }
+            case 'refreshed':
+                return {
+                    text: 'Refreshed',
+                    icon: '',
+                    disabled: false
+                }
+            default:
+                return {
+                    text: 'Refresh',
+                    icon: '',
+                    disabled: false
+                }
+        }
+    }
+
+    const buttonContent = getRefreshButtonContent()
+
     if (isLoading) return <Loader />
 
     return (
@@ -71,28 +112,67 @@ const AdminManageVehicles = () => {
 
             <div className="container mx-auto px-4 sm:px-8">
                 <div className="py-8">
-                    <div className="flex flex-col sm:flex-row justify-between items-center mb-6">
-                        <h2 className="text-2xl font-semibold leading-tight">
-                            Manage Vehicles ({vehicles.length})
-                        </h2>
+                    <div className="flex flex-col sm:flex-row justify-between items-center ">
+                        <div>
+                            <h2 className="text-2xl mb-1 font-semibold leading-tight">
+                                Manage Vehicles
+                            </h2>
+                            <p className=' mb-2 tracking-wider text-sm text-gray-700/90'> Manage all the vehicles form one place, edit, delete and check status</p>
+                            {/* Refresh Button */}
+                            <button
+                                onClick={handleRefresh}
+                                disabled={buttonContent.disabled}
+                                className={`inline-flex items-center px-3 py-1.5 border border-gray-300 text-sm font-medium rounded-full text-gray-100 bg-blue-950 hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 ${refreshState === 'refreshed'
+                                    ? 'border-green-300 bg-green-50 text-green-700'
+                                    : ''
+                                    }`}
+                            >
+                                <svg
+                                    className={`w-4 h-4 mr-2 ${buttonContent.icon}`}
+                                    fill="none"
+                                    stroke="currentColor"
+                                    viewBox="0 0 24 24"
+                                >
+                                    {refreshState === 'refreshed' ? (
+                                        <path
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                            strokeWidth="2"
+                                            d="M5 13l4 4L19 7"
+                                        />
+                                    ) : (
+                                        <path
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                            strokeWidth="2"
+                                            d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
+                                        />
+                                    )}
+                                </svg>
+                                {buttonContent.text}
+                            </button>
+                        </div>
 
-                        {/* Status Filter */}
-                        <div className="mt-4 sm:mt-0">
+                        {/* Actions Row */}
+                        <div className="flex items-center  gap-3 mt-4 sm:mt-0">
+                            {/* Status Filter */}
                             <select
                                 value={statusFilter}
                                 onChange={(e) => setStatusFilter(e.target.value)}
-                                className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                className="px-4 py-2 border-[1.5px] border-dashed animated-border-3 border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                             >
                                 <option value="active">Active Vehicles</option>
                                 <option value="deleted">Deleted Vehicles</option>
                                 <option value="cancelled">Cancelled Vehicles</option>
                             </select>
+                            <p className=' tracking-wider border border-l-[10px] animated-border-3 rounded-se-full rounded-ee-full px-4 py-[6px]'>Total Vehicle : {vehicles.length}</p>
+
                         </div>
                     </div>
 
                     {vehicles && vehicles.length > 0 ? (
                         <div className="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
-                            <div className="inline-block min-w-full shadow rounded-lg overflow-hidden">
+                            <div className="inline-block min-w-full shadow rounded-lg animated-border-3 border overflow-hidden">
                                 <table className="min-w-full leading-normal">
                                     {/* Desktop Header */}
                                     <thead className="hidden md:table-header-group">

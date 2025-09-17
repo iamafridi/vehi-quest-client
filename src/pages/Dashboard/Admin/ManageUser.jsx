@@ -6,11 +6,12 @@ import UserDataRow from '../../../components/Dashboard/TableRows/UserDataRow'
 
 const ManageUsers = () => {
   const [refreshState, setRefreshState] = useState('idle') // idle, refreshing, refreshed
+  const [roleFilter, setRoleFilter] = useState('all')
 
   const { data, refetch, isLoading, isError, error } = useQuery({
-    queryKey: ['users'],
+    queryKey: ['users', roleFilter],
     queryFn: async () => {
-      const res = await getAllUsers()
+      const res = await getAllUsers(roleFilter)
       return Array.isArray(res) ? res : res?.data || []
     },
   })
@@ -22,7 +23,6 @@ const ManageUsers = () => {
     try {
       await refetch()
       setRefreshState('refreshed')
-      // Reset to idle after 2 seconds
       setTimeout(() => {
         setRefreshState('idle')
       }, 2000)
@@ -34,23 +34,11 @@ const ManageUsers = () => {
   const getRefreshButtonContent = () => {
     switch (refreshState) {
       case 'refreshing':
-        return {
-          text: 'Refreshing...',
-          icon: 'animate-spin',
-          disabled: true
-        }
+        return { text: 'Refreshing...', icon: 'animate-spin', disabled: true }
       case 'refreshed':
-        return {
-          text: 'Refreshed',
-          icon: '',
-          disabled: false
-        }
+        return { text: 'Refreshed', icon: '', disabled: false }
       default:
-        return {
-          text: 'Refresh',
-          icon: '',
-          disabled: false
-        }
+        return { text: 'Refresh', icon: '', disabled: false }
     }
   }
 
@@ -118,11 +106,11 @@ const ManageUsers = () => {
         <div className="py-4">
           {/* Header Section */}
           <div className="mb-2">
-            <h1 className="text-2xl font-[font2] font-bold text-gray-900">Manage Users</h1>
-            <div className=" flex items-center mt-4 justify-between gap-8">
-              <p className="text-sm font-[font1] tracking-wide border-2 border-b-blue-950 rounded-full px-4 py-1 text-gray-500">
-                Total users: <span className="font-medium">{users.length}</span>
-              </p>
+            <h1 className="text-2xl mb-1 font-[font2] font-bold text-gray-900">Manage Users</h1>
+            <p className='text-sm tracking-wide text-gray-700/90'>Manage user, update user role, verify status</p>
+
+            <div className="flex flex-col sm:flex-row items-center mt-4 justify-between gap-3">
+              {/* Refresh Button */}
               <button
                 onClick={handleRefresh}
                 disabled={buttonContent.disabled}
@@ -143,12 +131,29 @@ const ManageUsers = () => {
                 </svg>
                 {buttonContent.text}
               </button>
+
+              {/* Role Filter */}
+              {/* <select
+                value={roleFilter}
+                onChange={(e) => setRoleFilter(e.target.value)}
+                className="px-4 py-2 border-[1.5px] border-dashed animated-border-3 border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              >
+                <option value="all">All Users</option>
+                <option value="admin">Admins</option>
+                <option value="host">Hosts</option>
+                <option value="guest">Guests</option>
+              </select> */}
+
+              {/* Total Count */}
+              <p className="text-sm font-[font1] tracking-wide px-4 py-2 border animated-border-3 border-l-[12px] rounded-se-full rounded-ee-full text-gray-500">
+                Total users: <span className="font-medium">{users.length}</span>
+              </p>
             </div>
           </div>
 
           {/* Table Section */}
-          <div className="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
-            <div className="inline-block min-w-full shadow-sm rounded-lg overflow-hidden border border-gray-200">
+          <div className="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto ">
+            <div className="inline-block min-w-full shadow-sm rounded-lg animated-border-3 overflow-hidden border border-gray-200">
               <table className="min-w-full leading-normal">
                 <thead className="bg-gray-50">
                   <tr>
